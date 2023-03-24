@@ -1,0 +1,31 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'index.css' %}"/>
+
+<form action="./" method="POST">
+     {% csrf_token %}
+  <div class="container">
+     <h2>Login Form</h2>
+     <hr/>
+     {% for message in messages %}
+          <p class="error" style="color: red; font-size: 20px">* {{ message }} *</p>
+     {% endfor %}
+    <label for="uname"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="username" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="password" required>
+        
+    <button type="submit">Login</button>
+    <label>
+      <input type="checkbox" checked="checked" name="remember"> Remember me
+    </label>
+
+    <div class="container-bottom">
+          <button type="button" class="cancelbtn">Cancel</button>
+          <span class="psw">Forgot <a href="#">password?</a></span>
+     </div>
+  </div>
+
+  
+</form>
