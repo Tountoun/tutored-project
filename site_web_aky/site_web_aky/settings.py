@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'application_web_aky',
+    
+    'django'
 ]
 
 MIDDLEWARE = [
