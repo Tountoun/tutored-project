@@ -1,0 +1,82 @@
+<style>
+     .container {
+          width: 500px;
+          margin: 0px auto;
+          margin-top: 100px;
+     }
+     form {
+          margin: 20px auto;
+     }
+     .form-control {
+          width: 500px;
+          margin-bottom: 10px;
+          font-size: 20px;
+          border: 2px solid black;
+          border-radius: 5px;
+          opacity: 0.5;
+          padding: 10px;
+     }
+     .form-input {
+          margin-top: 20px;
+          text-align: center;
+          padding: 10px;
+          font-size: 20px;
+     }
+     input[type=submit] {
+          padding: 10px;
+          font-size: 25px;
+          width: 100%;
+          border: none;
+          border-radius: 5px;
+          background-color: #f1f1f1;
+     }
+     input[type=submit]:hover {
+          background-color: #f2f3f2;
+          cursor: pointer;
+     }
+     span.error {
+          color: red;
+          font-size: 20px;
+          margin-bottom: 20px;
+          margin: 20px;
+     }
+</style>
+<div class="container">
+
+<h1>Remplir le formulaire de depôt</h1>
+
+{% for message in messages %}
+     <span class='error'>{{ message }}</span>
+{% endfor %}
+<form action="{% url 'etudiant_depot' %}" method="POST" enctype="multipart/form-data">
+     
+     {% csrf_token %}
+     <div>
+          {{ form.num_ordre  }}
+     </div>
+     <div>
+          {{ form.titre  }}
+     </div>
+     <div>
+          {{ form.description  }}
+     </div>
+     <div>
+          {{ form.media  }}
+     </div>
+     <div>
+          {{ form.theme  }}
+     </div>
+     {% if etudiant.deposer == True %}
+     <div class="form-input">
+          <input type="submit" value="Submit">
+     </div>
+     {% else %}
+     <div class="form-input">
+          <input type="submit" value="Submit" disabled=True>
+     </div>
+     {% endif %}
+     
+</form>
+
+
+</div>
