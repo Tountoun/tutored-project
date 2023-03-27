@@ -1,7 +1,12 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User, auth
+from django.http.response import FileResponse, HttpResponse
+from django.conf import settings
 from django.contrib import messages
+
+from itertools import chain
 import requests
+import os
 import json
 
 from .forms import MemoireForm
@@ -77,3 +82,44 @@ def deposer(request):
      }
      
      return render(request, 'depot.html', context)
+
+
+def consulter(request, memoire_pk):
+     memoire = Memoire.objects.filter(id=memoire_pk)
+     if memoire.exists():
+          try:
+               file_name = str(memoire.get().media)
+               file_path = os.path.join(settings.MEDIA_ROOT, file_name)
+               return FileResponse(open(file_path, 'rb'), content_type='application/pdf')
+          except FileNotFoundError:
+               print('Not found file')
+     return redirect('index')
+
+
+def profile(request):
+     user = User.objects.get(username=request.user.username)
+     is_admin = True
+     etablissement = ""
+     if Etudiant.objects.filter(user=user).exists():
+          is_admin = False
+          profile = Etudiant.objects.get(user=user)
+          parcours = profile.parcours
+          etablissement = parcours.etablissement
+     else:
+          profile = Administrateur.objects.filter(user=user).get()
+          parcours = Parcours.objects.filter(adminstrateur=profile)
+          etablissement =parcours[0].etablissement
+          libelles = []
+          for parc in parcours:
+               libelles.append(parc.libelle)
+          parcours = []
+          for i, libelle in enumerate(libelles):
+               parcours.append({'num': i + 1, 'libelle': libelle})
+     context = {
+          'user': user,
+          'profile': profile,
+          'is_admin': is_admin,
+          'parcours': parcours,
+          'etablissement': etablissement
+     }
+     return render(request, 'profile.html', context)
