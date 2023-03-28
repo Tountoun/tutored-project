@@ -1,82 +1,157 @@
-<style>
-     .container {
-          width: 500px;
-          margin: 0px auto;
-          margin-top: 100px;
+{% extends 'base.html' %}
+{% load static %}
+
+  <main>
+         
+    {% block content %}
+    
+    <style>
+     .container-fluid {
+     width: 700px;
+     margin: 0px auto;
+     margin-top: 3px;
      }
      form {
           margin: 20px auto;
+          padding: 8px 75px;
+          width: 500px;
+     }    
+
+     .color{
+          background-color: rgb(146, 140, 133);
+
      }
-     .form-control {
+     .form-desc {
           width: 500px;
           margin-bottom: 10px;
           font-size: 20px;
-          border: 2px solid black;
-          border-radius: 5px;
-          opacity: 0.5;
+          border-radius: 25px;
           padding: 10px;
+          border: none;
+          font-family: Cambria;
+          height: 3cm;
      }
-     .form-input {
-          margin-top: 20px;
-          text-align: center;
-          padding: 10px;
+
+     .form-theme {
+          width: 500px;
+          margin-bottom: 10px;
           font-size: 20px;
+          border-radius: 25px;
+          padding: 10px;
+          border: none;
+          font-family: Cambria;
      }
+
+     .form-media {
+          width: 500px;
+          margin-bottom: 10px;
+          font-size: 20px;
+          border-radius: 25px;
+          padding: 10px;
+          border: none;
+          font-family: Cambria;
+     }
+
+     .form-num {
+          width: 500px;
+          margin-bottom: 10px;
+          font-size: 20px;
+          border-radius: 25px;
+          padding: 10px;
+          border: none;
+          font-family: Cambria;
+     }
+
+     .form-titre {
+          width: 500px;
+          margin-bottom: 10px;
+          font-size: 20px;
+          border-radius: 25px;
+          padding: 10px;
+          border: none;
+          font-family: Cambria;
+          height: 1.5cm;
+     }
+
+
      input[type=submit] {
           padding: 10px;
-          font-size: 25px;
-          width: 100%;
+          font-size: 28px;
           border: none;
-          border-radius: 5px;
           background-color: #f1f1f1;
+          color: whitesmoke;
      }
      input[type=submit]:hover {
-          background-color: #f2f3f2;
+          background-color: #f2f2f2;
           cursor: pointer;
      }
-     span.error {
-          color: red;
+
+     .lib{
+          color: white;
           font-size: 20px;
-          margin-bottom: 20px;
-          margin: 20px;
+          margin-bottom: 3px;
      }
-</style>
-<div class="container">
 
-<h1>Remplir le formulaire de depôt</h1>
+     .error{
+          font-style: italic;
+          text-align: center;
+          color: red;
+     }
 
-{% for message in messages %}
-     <span class='error'>{{ message }}</span>
-{% endfor %}
-<form action="{% url 'etudiant_depot' %}" method="POST" enctype="multipart/form-data">
+     </style>
+
+    <div class="container-fluid">
+
+          <h2 style="text-align: center; ">Veuillez remplir le formulaire de depôt ci-dessous !</h1>
+          
+          {% for message in messages %}
+               <div class='error'>{{ message }}</div>
+          {% endfor %}
      
-     {% csrf_token %}
-     <div>
-          {{ form.num_ordre  }}
-     </div>
-     <div>
-          {{ form.titre  }}
-     </div>
-     <div>
-          {{ form.description  }}
-     </div>
-     <div>
-          {{ form.media  }}
-     </div>
-     <div>
-          {{ form.theme  }}
-     </div>
-     {% if etudiant.deposer == True %}
-     <div class="form-input">
-          <input type="submit" value="Submit">
-     </div>
-     {% else %}
-     <div class="form-input">
-          <input type="submit" value="Submit" disabled=True>
-     </div>
-     {% endif %}
+          <div class="color">
+               <form  method="POST" enctype="multipart/form-data">
+               
+                    {% csrf_token %}
+                    <div>
+                         <p class="lib">Numéro d'ordre</p>
+                         {{ form.num_ordre  }}
+                    </div>
+                    <div>
+                         <p class="lib">Choisir le thème du mémoire</p>
+                         {{ form.theme  }}
+                    </div>
+                    <div>
+                         <p class="lib">Titre du mémoire</p>
+                         {{ form.titre  }}
+                    </div>
+                    <div>
+                         <p class="lib">Brève description du mémoire</p>
+                         {{ form.description  }}
+                    </div>
      
-</form>
+                    <div>
+                         <p class="lib">Choisir le fichier(mémoire) à déposer</p>
+                         {{ form.media  }}
+                    </div>
+          </div>
+               
+               {% if etudiant.deposer == True %}
+               <center>
+                    <input style="font-family: Cambria; background-color: rgb(139, 139, 253); margin-bottom: 20px; width: 45%; border-radius: 25px;" class="depot" type="submit" value="Déposer">
+               </center>
+               {% else %}
+               <center>
+                    <input style="font-family: Cambria; background-color: rgb(139, 139, 253); margin-bottom: 20px; width: 45%; border-radius: 25px;" class="depot" type="submit" value="Déposer" disabled=True>
+               </center>
+               {% endif %}
 
+               
+          </form>
+          
+          
+          </div> 
 
-</div>
+          {% endblock %} 
+
+     </main>
+   

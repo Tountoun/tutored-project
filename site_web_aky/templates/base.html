@@ -1,0 +1,210 @@
+{% load static %}
+
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>aky dashboard</title>
+  <style>
+
+/* ########################################################################################### */
+                                        /* CSS DE BASE */
+/* ########################################################################################### */
+
+    html, body{
+      height: 100%;
+      margin: 0%;
+    }
+
+    body{
+      font-family: Georgia,;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header{
+      display: flex;
+      height: 75px;
+      width: 100%;
+      background-color: rgb(139, 139, 253);
+    }
+
+    .logo{
+      width: 70px;
+      margin: 0px 0px 0px 8px;
+    }
+
+    .bord{
+      font-size: 22px;
+      border-radius: 50px;
+      height: 30px;
+      padding: 5px 30px;
+      color: whitesmoke;
+      background-color: blue;
+      margin: 17px 20px 17px 930px;
+    }
+
+    .bord:hover{
+      background-color: rgb(7, 7, 190);
+    }
+
+    main{
+      position: relative;
+      flex-grow: 1;
+    }
+
+    footer{
+      position: relative;
+      height: 75px;
+      width: 100%;
+      background-color: rgb(139, 139, 253);
+    }
+
+    .pied{
+      font-family: system-ui;
+      font-size: 18px;
+      font-weight: 180;
+      margin: 25px;
+      text-align: center;
+    }
+
+    a{
+      text-decoration: none;
+    }
+
+    .imageprofil{
+        position: relative  ;
+        height: 40px;
+        margin-top: 17px;
+        margin-right: 25px;
+    }
+
+    .imageprofil:hover{
+        height: 60px;
+        background-color: whitesmoke;
+        border-radius: 100%;
+        margin-top: 7px;
+    }
+
+    .infoprofil{
+        height: 15px;
+        margin-top: 30px;
+    }
+
+    .infoprofil:hover{
+        height: 35px;
+        background-color: whitesmoke;
+        border-radius: 100%;
+        margin-top: 20px;    
+    }
+/* ########################################################################################### */
+                                    /* CSS POUR LES HOMES */
+/* ########################################################################################### */
+
+    .libellee{
+      font-family: Cambria;
+      letter-spacing: 5;
+      margin-top: 5%;
+      font-size: 25px;
+      font-weight: bold;
+      margin-left: 26%;
+    }
+
+    .choix1{
+      display: flex;
+    }
+
+    .c1{
+      font-family: Cambria;
+      color: black;
+      text-decoration: none;
+      font-size: 30px;
+      font-weight: bold;
+      margin: 5% 15% 0% 25%;
+      background-color: rgb(146, 140, 133);
+      padding: 16px 22px 8px 22px;
+      border-radius: 20%;
+    }
+
+    .recherche{
+      font-family: Cambria;
+      color: black;
+      text-decoration: none;
+      font-size: 30px;
+      margin: 4% 0% 0% 0%;
+      background-color: rgb(146, 140, 133);
+      padding: 25px 50px;
+      border-radius: 20px;
+    }
+
+    .c1:hover{
+      background-color: rgb(139, 139, 253);
+    }
+
+    .recherche:hover{
+      background-color: rgb(139, 139, 253);
+    }
+
+    .choix2{
+      display: flex;
+      margin-top: 4%;
+    }
+
+    .depot{
+      font-family: Cambria;
+      color: black;
+      text-decoration: none;
+      font-size: 30px;
+      margin: 4% 0% 0% 0%;
+      background-color: rgb(146, 140, 133);
+      padding: 25px 68px;
+      border-radius: 20px;
+    }
+
+    .depot:hover{
+      background-color: rgb(139, 139, 253);
+    }
+
+
+/* ########################################################################################### */
+                                    /* CSS POUR DEPOT*/
+/* ########################################################################################### */
+
+
+
+/* ########################################################################################### */
+                                    /* CSS POUR AUTORISER*/
+/* ########################################################################################### */
+
+
+/* ########################################################################################### */
+                                    /* CSS POUR RECHERCHER*/
+/* ########################################################################################### */
+
+
+
+  </style>
+</head>
+<body>
+  <header>
+
+    <img class="logo" src="{% static 'application_web_aky/images/logosansbg.png' %}" alt="">
+    <a href="{% url 'application_web_aky:home_etudiant' %}" class="bord">Tableau de bord</a> 
+    <img src="{% static 'application_web_aky/images/iprofil.png' %}" alt="imageprofil" class="imageprofil">
+    <a href="{% url 'application_web_aky:profile' %}"><img src="{% static 'application_web_aky/images/bas.png' %}" alt="icone profil" class="infoprofil"></a>
+  </header>
+
+
+  <main>
+
+    {% block content %}
+           
+    {% endblock %}  
+
+  </main>
+
+
+  <footer>
+    <div class="pied">© aky_team | Tous droits réservés | 2023</div>
+  </footer>
+</body>
+</html>

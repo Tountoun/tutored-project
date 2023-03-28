@@ -1,1 +1,25 @@
-<h1>Welcome to the admin home page</h1>
+{% extends 'base.html' %}
+{% load static %}
+
+  <main>
+
+    {% block content %}
+
+
+   <div class="block">
+    <div class="libellee">Que voulez-vous faire ?</div>
+
+    <div class="choix1">
+      <a href="{% url 'application_web_aky:recherche' %}" class="c1">1</a>
+      <a href="{% url 'application_web_aky:recherche' %}" class="recherche">Rechercher un mémoire</a>
+    </div>
+
+    <div class="choix2">
+      <a href="{% url 'application_web_aky:autorise' %}" class="c1">2</a>
+      <a href="{% url 'application_web_aky:autorise' %}" class="depot">Autoriser un dépôt</a>
+    </div>
+   </div>
+
+   {% endblock %} 
+
+  </main>

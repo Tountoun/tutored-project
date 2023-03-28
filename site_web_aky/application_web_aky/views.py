@@ -26,20 +26,29 @@ def index(request):
           if user is not None:
                auth.login(request, user)
                # determiner le type de l'utilisateur
-               user = User.objects.get(username=username)
+               adminuser = User.objects.get(username=username)
                if Etudiant.objects.filter(user=user).exists():
-                    return redirect('etudiant_home')
-               return redirect('admin_home')
-          return redirect('index')
+                    return redirect('home/etu')
+               return redirect('home/adm')
+          return redirect('./')
      return render(request, 'index.html')
 
 
-def admin_home(request):
+def home_admin(request):
      return render(request, 'admin_home.html')
 
 
-def etudiant_home(request):
+
+def autoriser(request):
+     return render(request, 'autoriser_depot.html')
+
+
+def home_etudiant(request):
      return render(request, 'etudiant_home.html')
+
+
+def recherche(request):
+     return render(request, 'recherche.html')
 
 
 def deposer(request):
@@ -66,10 +75,11 @@ def deposer(request):
                     memoire.save()
                     etudiant.save()
                     return redirect('index')
-               messages.info(request, 'Votre formualire n\'est pas valide')
+                    messages.info(request, 'Votre formulaire n\'est pas valide !!!')
+               messages.info(request, 'Votre formualire n\'est pas valide !!!')
                return redirect('index')
      else:
-          messages.info(request, 'Vous n\'êtes pas autorisé à faire un dépôt')
+          messages.info(request, 'Vous n\'êtes pas autorisé à faire un dépôt !!!')
      form_depot = MemoireForm()
      context = {
           'form': form_depot,
@@ -77,3 +87,47 @@ def deposer(request):
      }
      
      return render(request, 'depot.html', context)
+
+
+def consulter(request, memoire_pk):
+     memoire = Memoire.objects.filter(id=memoire_pk)
+     if memoire.exists():
+          try:
+               file_name = str(memoire.get().media)
+               file_path = os.path.join(settings.MEDIA_ROOT, file_name)
+               return FileResponse(open(file_path, 'rb'), content_type='application/pdf')
+          except FileNotFoundError:
+               print('File not found')
+     return redirect('index')
+
+
+def profile(request):
+     user = User.objects.get(username=request.user.username)
+     is_admin = True
+     etablissement = ""
+     if Etudiant.objects.filter(user=user).exists():
+          is_admin = False
+          profile = Etudiant.objects.get(user=user)
+          parcours = profile.parcours
+          etablissement = parcours.etablissement
+     else:
+          profile = Administrateur.objects.filter(user=user).get()
+          parcours = Parcours.objects.filter(adminstrateur=profile)
+          etablissement =parcours[0].etablissement
+          libelles = []
+          for parc in parcours:
+               libelles.append(parc.libelle)
+          parcours = []
+          for i, libelle in enumerate(libelles):
+               parcours.append({'num': i + 1, 'libelle': libelle})
+     context = {
+          'user': user,
+          'profile': profile,
+          'is_admin': is_admin,
+          'parcours': parcours,
+          'etablissement': etablissement
+     }
+     return render(request, 'profile.html', context)
+
+
+

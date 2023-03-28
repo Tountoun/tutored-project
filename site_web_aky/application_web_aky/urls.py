@@ -1,11 +1,15 @@
 from django.urls import path
 
 from . import views
-
+app_name = "application_web_aky"
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('admin/home', views.admin_home, name='admin_home'),
-    path('etudiant/home', views.etudiant_home, name='etudiant_home'),
+    path('home/adm', views.home_admin, name='home_admin'),
+    path('home/etu', views.home_etudiant, name='home_etudiant'),
     path('etudiant/deposer', views.deposer, name='etudiant_depot'),
+    path('rechercher/', views.recherche, name="recherche"),
+    path('etudiant/profile', views.profile, name='profile'),
+    path('profile/admin', views.profile, name='profile'),
+    path('depot/autoriser', views.autoriser, name='autorise'),    
 ]

@@ -7,9 +7,8 @@ class MemoireForm(ModelForm):
      theme = ModelChoiceField(
         queryset=Theme.objects.all(),
         widget=Select(attrs={
-            'class': 'form-control',
+            'class': 'form-theme',
         }),
-        empty_label='Choisir le thème du mémoire'
      )
      class Meta:
           model = Memoire
@@ -17,28 +16,19 @@ class MemoireForm(ModelForm):
 
           widgets = {
               'num_ordre': NumberInput(attrs={
-                    'class': 'form-control',
-                    'style': 'max-width: 500px;',
-                    'placeholder': 'Numero d\'ordre',
+                    'class': 'form-num',
                     'required': True
                }),
                'titre': Textarea(attrs={
-                    'class': 'form-control',
-                    'style': 'rows:2; cols:10;',
-                    'rows': '3',
-                    'placeholder': 'Titre du mémoire',
+                    'class': 'form-titre',
                     'required': True
                }),
                'description': Textarea(attrs={
-                    'class': 'form-control',
-                    'rows': '6',
-                    'placeholder': 'Description du mémoire',
+                    'class': 'form-desc',
                     'required': True
                }),
                'media': FileInput(attrs={
-                    'class': 'form-control',
-                    'style': 'max-width:500px;',
-                    'placeholder': 'Fichier du mémoire',
+                    'class': 'form-media',
                     'required': True,
                }),
           }
