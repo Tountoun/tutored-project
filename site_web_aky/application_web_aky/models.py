@@ -55,7 +55,7 @@ class Parcours(models.Model):
      id = models.UUIDField(primary_key=True, default=uuid4)
      libelle = models.CharField(max_length=128)
      etablissement = models.ForeignKey(Etablissement, on_delete=models.CASCADE)
-     adminstrateur = models.ForeignKey(Administrateur, on_delete=models.CASCADE)
+     adminstrateur = models.ForeignKey(Administrateur, on_delete=models.SET_NULL)
 
      class Meta:
           db_table = 'parcours'
@@ -82,10 +82,8 @@ class Memoire(models.Model):
      description = models.TextField()
      media = models.FileField(upload_to='documents/') # TODO: configure file path
      created_at = models.DateTimeField(auto_now_add=True)
-
-     etudiant = models.OneToOneField(Etudiant, on_delete=models.CASCADE)
-     
-     theme = models.ForeignKey(Theme, on_delete=models.CASCADE)
+     etudiant = models.OneToOneField(Etudiant, on_delete=models.SET_NULL)
+     theme = models.ForeignKey(Theme, on_delete=models.SET_NULL)
      
      class Meta:
           db_table = 'memoire'
