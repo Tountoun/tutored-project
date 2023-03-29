@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% include 'base.html' with profile="etudiant/profile" home="etudiant"%}
 {% load static %}
 
   <main>
@@ -8,16 +8,18 @@
     <div class="libellee">Que voulez-vous faire ?</div>
 
     <div class="choix1">
-      <a href="{% url 'application_web_aky:recherche' %}" class="c1">1</a>
-      <a href="{% url 'application_web_aky:recherche' %}" class="recherche">Rechercher un mémoire</a>
+      <a href="./rechercher" class="c1">1</a>
+      <a href="./rechercher" class="recherche">Rechercher un mémoire</a>
     </div>
 
     <div class="choix2">
-      <a href="{% url 'application_web_aky:etudiant_depot' %}" class="c1">2</a>
-      <a href="{% url 'application_web_aky:etudiant_depot' %}" class="depot">Déposer un mémoire</a>
+      <a href="./etudiant/deposer/" class="c1">2</a>
+      <a href="./etudiant/deposer/" class="depot">Déposer un mémoire</a>
     </div>
    </div>
 
    {% endblock %} 
 
   </main>
+
+{% include 'footer.html' %}

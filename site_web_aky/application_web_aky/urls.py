@@ -7,20 +7,19 @@ urlpatterns = [
    
     path('', views.index, name='index'),
    
-    path('home/adm', views.home_admin, name='home_admin'),
+    path('admin', views.home_admin, name='home_admin'),
    
-    path('home/etu', views.home_etudiant, name='home_etudiant'),
+    path('etudiant', views.home_etudiant, name='home_etudiant'),
    
-    path('etudiant/deposer', views.deposer, name='etudiant_depot'),
+    path('etudiant/deposer/', views.deposer, name='deposer'),
    
-    path('rechercher/', views.recherche, name="recherche"),
+    path('rechercher/', views.rechercher, name="rechercher"),
+
+    path('admin/autoriser/', views.autoriser, name='autoriser'),  
    
     path('etudiant/profile', views.profile, name='profile'),
    
-    path('admi/profile', views.profile, name='profile'),
-   
-    path('depot/autoriser', views.autoriser, name='autorise'),  
-    
-    path('filtre/', views.filter, name='filtre'),    
-  
-]
+    path('admin/profile', views.profile, name='profile'),
+
+    path('consulter', views.consulter, name='consulter'),
+    ]

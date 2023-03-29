@@ -3,7 +3,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>aky dashboard</title>
+  <title>aky dashboaretudiantd</title>
   <style>
 
 /* ########################################################################################### */
@@ -188,9 +188,9 @@
   <header>
 
     <img class="logo" src="{% static 'application_web_aky/images/logosansbg.png' %}" alt="">
-    <a href="{% url 'application_web_aky:home_etudiant' %}" class="bord">Tableau de bord</a> 
+    <a href={{ home }} class="bord">Tableau de bord</a> 
     <img src="{% static 'application_web_aky/images/iprofil.png' %}" alt="imageprofil" class="imageprofil">
-    <a href="{% url 'application_web_aky:profile' %}"><img src="{% static 'application_web_aky/images/bas.png' %}" alt="icone profil" class="infoprofil"></a>
+    <a href={{ profile }}><img src="{% static 'application_web_aky/images/bas.png' %}" alt="icone profil" class="infoprofil"></a>
   </header>
 
 
@@ -201,10 +201,5 @@
     {% endblock %}  
 
   </main>
-
-
-  <footer>
-    <div class="pied">© aky_team | Tous droits réservés | 2023</div>
-  </footer>
 </body>
 </html>

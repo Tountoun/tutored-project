@@ -1,4 +1,9 @@
-{% extends 'base.html' %}
+{% if is_admin == True %}
+  {% include 'base.html' with profile="/aky/admin/profile" home="/aky/admin" %}
+{% else %}
+  {% include 'base.html' with profile="/aky/etudiant/profile" home="/aky/etudiant" %}
+{% endif %}
+
 {% load static %}
 
 <main>
@@ -25,6 +30,11 @@
     }
 
     .d1 {
+      display: flex;
+      border-bottom: 1px solid rgb(194, 193, 191);
+    }
+
+    .d0{
       display: flex;
       border-bottom: 1px solid rgb(194, 193, 191);
     }
@@ -94,20 +104,20 @@
 
     .tform {
       /* width: 14%; */
-      background-color: rgb(167, 146, 131);
       padding: 1%;
-      color: whitesmoke;
       font-family: Arial;
       padding-bottom: 15%;
+      border: 2px solid black;
     }
 
     .tbouton {
       padding: 3% 7%;
-      background-color: black;
+      background-color: #6d7fe6;
       color: white;
       font-weight: bold;
       font-family: Arial;
-      border: 2px solid black;
+      border: none;
+      border-radius: 5px;
 
     }
 
@@ -121,7 +131,7 @@
     
   </style>
 
-<div class="d1">
+<div class="d0">
   <button class="a1" id="filter">
     <img src="{% static 'application_web_aky/images/filtre.png' %}" alt="" class="filtre">
     <div class="textefiltre">Filtrer</div>
@@ -175,100 +185,13 @@
           </a>
 
           <div class="meminfo" style="margin-right: 3%;">
-            <p class="block"><strong>Numéro d'ordre du mémoire:</strong> 544761_GL23</p>
-            <p class="block"><strong>Auteur du mémoire:</strong> YOVO Amèvi</p>
-            <p class="block"><strong>Titre du mémoire:</strong> Réalisation d'un site web d'archivage des mémoires des
-              étudiants de l'EPL-UL</p>
-            <p class="block"><strong>Brève description du projet: </strong> poribus illum voluptaLorem ipsum dolor sit
-              amet consectetur, adipisicing elit. Nostrum in nemo sit beatae tempora amet, voluptates repellendus aut
-              necessitatibus! Pariatur unde in ad ullam, temporibus illum voluptates eum beatae dicta?</p>
+            <p class="block"><strong>Numéro d'ordre du mémoire:</strong> </p>
+            <p class="block"><strong>Auteur du mémoire:</strong> </p>
+            <p class="block"><strong>Titre du mémoire:</strong> </p>
+            <p class="block"><strong>Brève description du projet: </strong></p>
           </div>
 
         </div>
-
-        <div class="d1">
-          <a href="#" class="a2">
-            <img src="{% static 'application_web_aky/images/memoire1.png' %}" alt="" class="imemoire">
-          </a>
-
-          <div class="meminfo" style="margin-right: 3%;">
-            <p class="block"><strong>Numéro d'ordre du mémoire:</strong> 544761_GL23</p>
-            <p class="block"><strong>Auteur du mémoire:</strong> YOVO Amèvi</p>
-            <p class="block"><strong>Titre du mémoire:</strong> Réalisation d'un site web d'archivage des mémoires des
-              étudiants de l'EPL-UL</p>
-            <p class="block"><strong>Brève description du projet: </strong> poribus illum voluptaLorem ipsum dolor sit
-              amet consectetur, adipisicing elit. Nostrum in nemo sit beatae tempora amet, voluptates repellendus aut
-              necessitatibus! Pariatur unde in ad ullam, temporibus illum voluptates eum beatae dicta?</p>
-          </div>
-
-        </div>
-
-        <div class="d1">
-          <a href="#" class="a2">
-            <img src="{% static 'application_web_aky/images/memoire1.png' %}" alt="" class="imemoire">
-          </a>
-
-          <div class="meminfo" style="margin-right: 3%;">
-            <p class="block"><strong>Numéro d'ordre du mémoire:</strong> 544761_GL23</p>
-            <p class="block"><strong>Auteur du mémoire:</strong> YOVO Amèvi</p>
-            <p class="block"><strong>Titre du mémoire:</strong> Réalisation d'un site web d'archivage des mémoires des
-              étudiants de l'EPL-UL</p>
-            <p class="block"><strong>Brève description du projet: </strong> poribus illum voluptaLorem ipsum dolor sit
-              amet consectetur, adipisicing elit. Nostrum in nemo sit beatae tempora amet, voluptates repellendus aut
-              necessitatibus! Pariatur unde in ad ullam, temporibus illum voluptates eum beatae dicta?</p>
-          </div>
-
-        </div>
-
-        <div class="d1">
-          <a href="#" class="a2">
-            <img src="{% static 'application_web_aky/images/memoire1.png' %}" alt="" class="imemoire">
-          </a>
-
-          <div class="meminfo" style="margin-right: 3%;">
-            <p class="block"><strong>Numéro d'ordre du mémoire:</strong> 544761_GL23</p>
-            <p class="block"><strong>Auteur du mémoire:</strong> YOVO Amèvi</p>
-            <p class="block"><strong>Titre du mémoire:</strong> Réalisation d'un site web d'archivage des mémoires des
-              étudiants de l'EPL-UL</p>
-            <p class="block"><strong>Brève description du projet: </strong> poribus illum voluptaLorem ipsum dolor sit
-              amet consectetur, adipisicing elit. Nostrum in nemo sit beatae tempora amet, voluptates repellendus aut
-              necessitatibus! Pariatur unde in ad ullam, temporibus illum voluptates eum beatae dicta?</p>
-          </div>
-
-        </div>
-
-        <div class="d1">
-          <a href="#" class="a2">
-            <img src="{% static 'application_web_aky/images/memoire1.png' %}" alt="" class="imemoire">
-          </a>
-
-          <div class="meminfo" style="margin-right: 3%;">
-            <p class="block"><strong>Numéro d'ordre du mémoire:</strong> 544761_GL23</p>
-            <p class="block"><strong>Auteur du mémoire:</strong> YOVO Amèvi</p>
-            <p class="block"><strong>Titre du mémoire:</strong> Réalisation d'un site web d'archivage des mémoires des
-              étudiants de l'EPL-UL</p>
-            <p class="block"><strong>Brève description du projet: </strong> poribus illum voluptaLorem ipsum dolor sit
-              amet consectetur, adipisicing elit. Nostrum in nemo sit beatae tempora amet, voluptates repellendus aut
-              necessitatibus! Pariatur unde in ad ullam, temporibus illum voluptates eum beatae dicta?</p>
-          </div>
-
-        </div>
-
-        <div class="d1">
-          <a href="#" class="a2">
-            <img src="{% static 'application_web_aky/images/memoire1.png' %}" alt="" class="imemoire">
-          </a>
-
-          <div class="meminfo" style="margin-right: 3%;">
-            <p class="block"><strong>Numéro d'ordre du mémoire:</strong> 544761_GL23</p>
-            <p class="block"><strong>Auteur du mémoire:</strong> YOVO Amèvi</p>
-            <p class="block"><strong>Titre du mémoire:</strong> Réalisation d'un site web d'archivage des mémoires des
-              étudiants de l'EPL-UL</p>
-            <p class="block"><strong>Brève description du projet: </strong> poribus illum voluptaLorem ipsum dolor sit
-              amet consectetur, adipisicing elit. Nostrum in nemo sit beatae tempora amet, voluptates repellendus aut
-              necessitatibus! Pariatur unde in ad ullam, temporibus illum voluptates eum beatae dicta?</p>
-          </div>
-
         </div>
 
       </main>
@@ -289,3 +212,4 @@
 
   
 </main>
+{% include 'footer.html' %}

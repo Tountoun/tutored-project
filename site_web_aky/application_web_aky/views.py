@@ -34,8 +34,8 @@ def index(request):
                # determiner le type de l'utilisateur
                adminuser = User.objects.get(username=username)
                if Etudiant.objects.filter(user=user).exists():
-                    return redirect('home/etu')
-               return redirect('home/adm')
+                    return redirect('./etudiant')
+               return redirect('./admin')
           return redirect('./')
      return render(request, 'index.html')
 
@@ -96,9 +96,14 @@ def filter(request):
      return render(request, 'filtre.html')
 
 
-def recherche(request):
-     return render(request, 'recherche.html')
-
+def rechercher(request):
+     if request.user.is_authenticated:
+          user = User.objects.get(username=request.user.username)
+          is_admin = False
+          if Administrateur.objects.filter(user=user).exists():
+               is_admin = True
+          return render(request, 'recherche.html', {"is_admin": is_admin})
+     return redirect("index")
 
 def deposer(request):
      user = User.objects.get(username=request.user.username)
@@ -134,7 +139,7 @@ def deposer(request):
           'form': form_depot,
           'etudiant': etudiant
      }
-     
+
      return render(request, 'depot.html', context)
 
 
@@ -155,12 +160,12 @@ def profile(request):
           is_admin = True
           etablissement = ""
           user = User.objects.get(username=request.user.username)
-          if Etudiant.objects.filter(user=user).exists() and request.get_full_path() == 'etudiant/profile':
+          if Etudiant.objects.filter(user=user).exists() and request.get_full_path() == '/aky/etudiant/profile':
                is_admin = False
                profile = Etudiant.objects.get(user=user)
                parcours = profile.parcours
                etablissement = parcours.etablissement
-          elif Administrateur.objects.filter(user=user) and request.get_full_path() == 'admi/profile':
+          elif Administrateur.objects.filter(user=user) and request.get_full_path() == '/aky/admin/profile':
                profile = Administrateur.objects.filter(user=user).get()
                parcours = Parcours.objects.filter(adminstrateur=profile)
                etablissement = parcours[0].etablissement
