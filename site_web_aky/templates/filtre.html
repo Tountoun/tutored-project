@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Formulaire de tri</title>
+    <style>
+          
+        body{
+            margin: 0;
+        }
+        .tform{
+            width: 14%;
+            background-color: rgb(167, 146, 131);
+            padding: 1%;
+            color: whitesmoke;
+            font-family: Arial;
+            height: 550px;
+        }
+
+        .tbouton{
+            padding: 3% 7%;
+            background-color: rgb(167, 146, 131);
+            color: white;
+            font-weight: bold;
+            font-family: Arial;
+            border: 2px solid black;
+
+        }
+
+        .tbouton:hover{
+            background-color: blue;
+        }
+
+        .text{
+            max-width: 14%;
+            margin-left: 15px;
+            text-align: center;
+            background-color: rgb(167, 146, 131);
+            color: whitesmoke;
+            padding: 10px 0px;
+            font-family: Arial;
+            margin-bottom: 1px;
+        }
+    </style>
+  </head>
+  <body>
+    <p class="text">Composer votre filtre !</p>
+    <form class="tform">
+      <fieldset class="tbloc" style="margin-bottom: 10%;">
+        <legend>Année</legend>
+        <label><input type="checkbox" name="annee" value="2021"> 2021</label><br>
+        <label><input type="checkbox" name="annee" value="2022"> 2022</label><br>
+        <label><input type="checkbox" name="annee" value="2023"> 2023</label><br>
+      </fieldset>
+      <fieldset class="tbloc" style="margin-bottom: 10%;">
+        <legend>Parcours</legend>
+        <label><input type="checkbox" name="parcours" value="genie logiciel"> Génie logiciel</label><br>
+        <label><input type="checkbox" name="parcours" value="genie mecanique"> Génie mécanique</label><br>
+        <label><input type="checkbox" name="parcours" value="big data"> Big data</label><br>
+      </fieldset>
+      <fieldset class="tbloc" style="margin-bottom: 10%;">
+        <legend>Thème</legend>
+        <label><input type="checkbox" name="theme" value="sante"> Santé</label><br>
+        <label><input type="checkbox" name="theme" value="economie"> Économie</label><br>
+        <label><input type="checkbox" name="theme" value="agriculture"> Agriculture</label><br>
+      </fieldset>
+      <center>
+        <input class="tbouton" type="submit" value="Appliquer le flitre">
+      </center>
+    </form>
+  </body>
+</html>

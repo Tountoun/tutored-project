@@ -1,0 +1,12 @@
+<form action="autoriser" method="POST">
+  {% csrf_token %}
+  {% for etudiant in etudiants %}
+       {% if etudiant.deposer == True %}
+       <input type="checkbox" id="{{etudiant.nom}} {{etudiant.prenoms}}" name="user_id" value="{{etudiant.user_id}}" checked>
+       {% else %}
+       <input type="checkbox" id="{{etudiant.nom}} {{etudiant.prenoms}}" name="user_id" value="{{etudiant.user_id}}">
+       {% endif %}
+       <label for="{{etudiant.nom}} {{etudiant.prenoms}}">{{ etudiant.no_carte }} {{ etudiant.nom }} {{ etudiant.prenoms }}</label><br>
+  {% endfor %}
+  <input type="submit" value="Envoyer">
+</form>

@@ -30,6 +30,7 @@ class MemoireForm(ModelForm):
                'media': FileInput(attrs={
                     'class': 'form-media',
                     'required': True,
+                    'placeholder':'Choisir un fichier'
                }),
           }
           
