@@ -84,12 +84,12 @@ class Memoire(models.Model):
      created_at = models.DateTimeField(auto_now_add=True)
 
      etudiant = models.OneToOneField(Etudiant, on_delete=models.CASCADE)
-     
+
      theme = models.ForeignKey(Theme, on_delete=models.CASCADE)
-     
+
      class Meta:
           db_table = 'memoire'
           ordering = ['created_at', 'num_ordre']
-     
+
      def __str__(self):
           return f'{self.num_ordre} {self.titre}'

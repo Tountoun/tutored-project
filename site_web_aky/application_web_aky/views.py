@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User, auth
+from django.db.models import Q
 from django.http.response import FileResponse, HttpResponse
 from django.conf import settings
 from django.contrib import messages
@@ -43,8 +44,6 @@ def index(request):
 def home_admin(request):
      return render(request, 'admin_home.html')
 
-
-
 def autoriser(request):
      if request.user.is_authenticated:
           user = User.objects.get(username=request.user.username)
@@ -86,23 +85,75 @@ def autoriser(request):
      return redirect('index')
 
 
-
 def home_etudiant(request):
      return render(request, 'etudiant_home.html')
 
 
 
-def filter(request):
-     return render(request, 'filtre.html')
+def filtrer(filtres_theme=[], filtres_parcours=[]):
+     etudiants_ids, themes_ids = [], []
 
+     if filtres_theme:
+          themes = Theme.objects.filter(libelle__in=[theme.capitalize() for theme in filtres_theme]).values()
+          [themes_ids.append(theme['id']) for theme in themes]
+     if filtres_parcours:
+          parcours = Parcours.objects.filter(
+              libelle__in = [parc.title() for parc in filtres_parcours]).values('id')
+          for parc in parcours:
+               etudiant_filtre = Etudiant.objects.filter(parcours=parc['id']).values()
+               [etudiants_ids.append(etudiant['id']) for etudiant in etudiant_filtre]
+     parcours_memoires = [Memoire.objects.filter(etudiant=id).values() for id in etudiants_ids]
+     theme_memoires = [Memoire.objects.filter(theme=id).values() for id in themes_ids]
+     if filtres_parcours and filtres_theme:
+          memoires = Memoire.objects.filter(Q(etudiant__in=etudiants_ids) & Q(theme__in=themes_ids)).values()
+     elif filtres_theme:
+          memoires = Memoire.objects.filter(Q(theme__in=themes_ids)).values()
+     elif filtres_parcours:
+          memoires = Memoire.objects.filter(Q(etudiant__in=etudiants_ids)).values()
+     else:
+          memoires = Memoire.objects.all().values()
+     return memoires
 
 def rechercher(request):
      if request.user.is_authenticated:
+          memoires_list = []
+          if request.method == 'POST':
+               precedent = request.POST.getlist('precedent')
+               cle = request.POST.get('mot_cle')
+               filtres_annee = request.POST.getlist('annee')
+               filtres_parcours = request.POST.getlist('parcours')
+               filtres_theme = request.POST.getlist('theme')
+               if cle:
+                    if precedent:
+                        memoires_precedents = Memoire.objects.filter(id__in=precedent)
+                        memoires = memoires_precedents.filter(description__icontains=cle).all().values()
+                    else:
+                        memoires = Memoire.objects.all().values()
+               else:
+                    memoires = filtrer(filtres_theme=filtres_theme, filtres_parcours=filtres_parcours)
+          else:
+               memoires = Memoire.objects.all().values()
+
+          for memoire in memoires:
+               memoire_dict = {}
+               etudiant = memoire.get('etudiant_id')
+               user_etu = User.objects.filter(etudiant=etudiant).values().first()
+               memoire_dict['id'] = memoire['id']
+               memoire_dict['titre'] = memoire['titre']
+               memoire_dict['num_ordre'] = memoire['num_ordre']
+               memoire_dict['description'] = memoire['description']
+               memoire_dict['auteur'] = user_etu['last_name'] + ' ' + user_etu['first_name']
+               memoires_list.append(memoire_dict)
           user = User.objects.get(username=request.user.username)
           is_admin = False
           if Administrateur.objects.filter(user=user).exists():
                is_admin = True
-          return render(request, 'recherche.html', {"is_admin": is_admin})
+          context = {
+               'is_admin': is_admin,
+               'memoires': memoires_list,
+               'resultats': len(memoires_list)
+          }
+          return render(request, 'recherche.html', context)
      return redirect("index")
 
 def deposer(request):
@@ -129,7 +180,6 @@ def deposer(request):
                     memoire.save()
                     etudiant.save()
                     return redirect('index')
-                    messages.info(request, 'Votre formulaire n\'est pas valide !!!')
                messages.info(request, 'Votre formualire n\'est pas valide !!!')
                return redirect('index')
      else:
@@ -152,7 +202,7 @@ def consulter(request, memoire_pk):
                return FileResponse(open(file_path, 'rb'), content_type='application/pdf')
           except FileNotFoundError:
                print('Not found file')
-     return redirect('index')
+     return redirect('./')
 
 
 def profile(request):

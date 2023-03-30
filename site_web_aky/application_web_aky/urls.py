@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, re_path
 
 from . import views
 app_name = "application_web_aky"
@@ -21,5 +21,7 @@ urlpatterns = [
    
     path('admin/profile', views.profile, name='profile'),
 
-    path('consulter', views.consulter, name='consulter'),
+    re_path(r'^consulter/(?P<memoire_pk>[0-9a-f-]+)/$',
+            views.consulter, name='consulter'),
+
     ]

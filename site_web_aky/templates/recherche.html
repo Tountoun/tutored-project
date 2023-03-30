@@ -14,8 +14,11 @@
     .a1 {
       display: flex;
       border: 1px rgb(165, 163, 161) solid;
-      margin: 1% 2% 1% 2%;
-      padding: 1.5%;
+      margin-top: 50px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      padding: 15px 20px 0px;
+      margin-left: 20px;
     }
 
     .a1:hover {
@@ -24,9 +27,13 @@
 
     .a2 {
       display: flex;
-      border: 1px rgb(165, 163, 161) solid;
-      margin: 1% 2% 1% 25px;
-      padding: 1%;
+      margin-top: 0px;
+      margin-left: 5px;
+      margin-right: 20px;
+      padding-top: 30px;
+      padding-right: 10px;
+      padding-left: 10px;
+      padding-bottom: 4px;
     }
 
     .d1 {
@@ -36,41 +43,53 @@
 
     .d0{
       display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      flex-wrap: nowrap;
       border-bottom: 1px solid rgb(194, 193, 191);
     }
 
     .filtre {
-      height: 35px;
+      height: 25px;
+      width: 30px;
+      margin: 0px;
     }
 
     .textefiltre {
-      margin-left: 10px;
       color: black;
-      padding-top: 7px;
+      padding-top: 2px;
       font-size: 20px;
     }
 
     .resultat {
-      margin-left: 28%;
+      flex-grow: 1;
+      margin-left: 50px;
+      padding-top: 80px;
+      padding-left: 50px;
     }
 
     .form-search{
+      flex-grow: 2;
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-left: 20%;
-      margin-top: 10px;
+      margin-left: 20px;
+      margin-top: 50px;
     }
 
     input[type="text"] {
-      padding: 8px;
+      padding: 12px;
       font-family: Cambria;
       border: none;
-      height: 57px;
+      height: 60px;
       background-color: rgb(175, 175, 174);
       border-radius: 4px 0 0 4px;
-      font-size: larger;
+      font-size: 20px;
       width: 270px;
+    }
+    
+    input[type="checkbox"] {
+      margin: 8px;
     }
 
     button[type="submit"] {
@@ -81,8 +100,8 @@
       border: none;
       border-radius: 0 4px 4px 0;
       cursor: pointer;
-      font-size: larger;
-      height: 57px;
+      font-size: 25px;
+      height: 60px;
     }
 
     .imemoire {
@@ -90,12 +109,16 @@
       width: 3cm;
     }
 
-    .a2:hover {
-      background-color: rgb(139, 139, 253);
-    }
-
     .block {
       font-family: Arial, Helvetica, sans-serif;
+    }
+
+    p {
+      font-size: 16px;
+    }
+    span {
+      font-size: 18px;
+      font-weight: bold;
     }
 
     .flex {
@@ -103,32 +126,51 @@
     }
 
     .tform {
-      /* width: 14%; */
-      padding: 1%;
+      padding: 20px;
       font-family: Arial;
-      padding-bottom: 15%;
-      border: 2px solid black;
+      border-right: 1px solid black;
+      height: 100vh;
+      margin: 15px 20px 0px;
+      transition: 0.5s ease;
     }
 
     .tbouton {
-      padding: 3% 7%;
+      padding: 15px 20px;
       background-color: #6d7fe6;
+      width: 100%;
+      font-size: 20px;
       color: white;
-      font-weight: bold;
       font-family: Arial;
       border: none;
       border-radius: 5px;
-
     }
 
     .tbouton:hover {
       background-color: blue;
+      cursor: pointer;
     }
 
     .hidden{
       display: none;
     }
-    
+    .flex .d1 .consulter-btn {
+      position: absolute;
+      background: #6d7fe6;
+      color: white;
+      margin-top: 40px;
+      right: 10px;
+      border: none;
+      padding: 15px 20px;
+      font-size: 20px;
+      border-radius: 5px;
+    }
+    .flex .d1 .consulter-btn:hover {
+      cursor: pointer;
+      background-color: blue;
+    }
+   .tbloc {
+      margin-bottom: 40px;
+   }
   </style>
 
 <div class="d0">
@@ -137,73 +179,96 @@
     <div class="textefiltre">Filtrer</div>
   </button>
 
-  <form class="form-search ">
-    <input type="text" placeholder="Rechercher...">
+  <form class="form-search " method="POST" action="./">
+    {% csrf_token %}
+    <input type="text" placeholder="Rechercher..." name="mot_cle">
+    {% for memoire in memoires %}
+      <input type="hidden" name="precedent" value={{memoire.id}}>
+    {% endfor %}
     <button type="submit">Soumettre</button>
   </form>
 
-  <div class="resultat"><br><br><br><br><br> 11 résultats</div>
+  <div class="resultat">
+    {% if resultats > 1 %}
+       {{resultats}} résultats
+    {% else %}
+       {{resultats}} résultat
+    {% endif %}
+  </div>
 </div>
 
   <div class="flex">
 
     <div>
-      <form class="tform hidden"  id="filter-form">
-<!--       <p class="text">Composer votre filtre !</p>
- -->
-        <fieldset class="tbloc" style="margin-bottom: 10%;">
+      <a href="?all=True">
+            <button class="consulter-btn">Tous</button>
+      </a>
+      <form class="tform hidden"  id="filter-form" method="POST" action="./">
+        {% csrf_token %}
+        <fieldset class="tbloc">
           <legend>Année</legend>
           <label><input type="checkbox" name="annee" value="2021"> 2021</label><br>
           <label><input type="checkbox" name="annee" value="2022"> 2022</label><br>
           <label><input type="checkbox" name="annee" value="2023"> 2023</label><br>
         </fieldset>
-        <fieldset class="tbloc" style="margin-bottom: 10%;">
+        <fieldset class="tbloc">
           <legend>Parcours</legend>
-          <label><input type="checkbox" name="parcours" value="genie logiciel"> Génie logiciel</label><br>
-          <label><input type="checkbox" name="parcours" value="genie mecanique"> Génie mécanique</label><br>
+          <label><input type="checkbox" name="parcours" value="génie logiciel"> Génie logiciel</label><br>
+          <label><input type="checkbox" name="parcours" value="génie mecanique"> Génie mécanique</label><br>
           <label><input type="checkbox" name="parcours" value="big data"> Big data</label><br>
         </fieldset>
-        <fieldset class="tbloc" style="margin-bottom: 10%;">
+        <fieldset class="tbloc">
           <legend>Thème</legend>
-          <label><input type="checkbox" name="theme" value="sante"> Santé</label><br>
+          <label><input type="checkbox" name="theme" value="santé"> Santé</label><br>
           <label><input type="checkbox" name="theme" value="economie"> Économie</label><br>
           <label><input type="checkbox" name="theme" value="agriculture"> Agriculture</label><br>
+          <label><input type="checkbox" name="theme" value="transport"> Transport</label><br>
+          <label><input type="checkbox" name="theme" value="education"> Education</label><br>
         </fieldset>
         <center>
           <input class="tbouton" type="submit" value="Appliquer">
         </center>
+        {% for memoire in memoires %}
+          <input type="hidden" name="precedent" value={{memoire.id}}>
+        {% endfor %}
       </form>
 
     </div>
 
     <div>
       <main>
-
+        {% for memoire in memoires %}
         <div class="d1">
           <a href="#" class="a2">
             <img src="{% static 'application_web_aky/images/memoire1.png' %}" alt="" class="imemoire">
           </a>
-
+          
           <div class="meminfo" style="margin-right: 3%;">
-            <p class="block"><strong>Numéro d'ordre du mémoire:</strong> </p>
-            <p class="block"><strong>Auteur du mémoire:</strong> </p>
-            <p class="block"><strong>Titre du mémoire:</strong> </p>
-            <p class="block"><strong>Brève description du projet: </strong></p>
+            <p class="block"><span>Numéro d'ordre du mémoire</span>: {{memoire.num_ordre}} </p>
+            <p class="block"><span>Auteur du mémoire</span>: {{memoire.auteur}} </p>
+            <p class="block"><span>Titre du mémoire</span>: {{memoire.titre}} </p>
+            <p class="block"><span>Brève description du projet</span>: {{memoire.description | truncatewords:20}}</strong></p>
           </div>
-
+          {% comment "" %}
+          <button class="consulter-btn">
+            <a href="#">Consulter</a>
+          </button>
+          {% endcomment %}
+        
+          <a href="/aky/consulter/{{memoire.id}}">
+            <button class="consulter-btn">Consulter</button>
+          </a>
         </div>
-        </div>
-
+        {% endfor %}
       </main>
     </div>
 
   </div>
   
   <script>
-    const filterButton=document.getElementById('filter');
-    const filterForm=document.getElementById('filter-form');
+    const filterButton = document.getElementById('filter');
+    const filterForm = document.getElementById('filter-form');
 
-    console.log(filterButton);
     filterButton.onclick=(e)=>{
       filterForm.classList.toggle("hidden");
     }
