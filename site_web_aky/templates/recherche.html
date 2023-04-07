@@ -25,20 +25,13 @@
       background-color: rgb(155, 155, 252);
     }
 
-    .a2 {
-      display: flex;
-      margin-top: 0px;
-      margin-left: 5px;
-      margin-right: 20px;
-      padding-top: 30px;
-      padding-right: 10px;
-      padding-left: 10px;
-      padding-bottom: 4px;
-    }
-
     .d1 {
       display: flex;
       border-bottom: 1px solid rgb(194, 193, 191);
+    }
+
+    .d1:hover{
+      background-color: whitesmoke;
     }
 
     .d0{
@@ -105,8 +98,17 @@
     }
 
     .imemoire {
+      display: flex;
       height: 3cm;
       width: 3cm;
+      border: black 1px solid;
+      margin: 15px 20px 0px 5px;
+      padding: 8px;
+      background-color: rgb(194, 193, 191);
+    }
+
+    .imemoire:hover{
+      background-color: #6d7fe6;
     }
 
     .block {
@@ -171,6 +173,7 @@
    .tbloc {
       margin-bottom: 40px;
    }
+   
   </style>
 
 <div class="d0">
@@ -239,9 +242,7 @@
       <main>
         {% for memoire in memoires %}
         <div class="d1">
-          <a href="#" class="a2">
-            <img src="{% static 'application_web_aky/images/memoire1.png' %}" alt="" class="imemoire">
-          </a>
+          <img src="{% static 'application_web_aky/images/logo.jpg' %}" alt="" class="imemoire">
           
           <div class="meminfo" style="margin-right: 3%;">
             <p class="block"><span>Numéro d'ordre du mémoire</span>: {{memoire.num_ordre}} </p>

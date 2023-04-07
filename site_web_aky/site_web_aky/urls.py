@@ -20,5 +20,6 @@ from django.shortcuts import redirect
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('aky/', include('application_web_aky.urls')),
+    path( "accounts/" ,  include ( "django.contrib.auth.urls" )),
     path('', lambda request: redirect("aky/",permament=False))
 ]

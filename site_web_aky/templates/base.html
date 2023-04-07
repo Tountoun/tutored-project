@@ -25,7 +25,7 @@
       display: flex;
       height: 75px;
       width: 100%;
-      background-color: rgb(139, 139, 253);
+      background-color: #6d7fe6;
     }
 
     .logo{
@@ -57,30 +57,77 @@
     }
 
     .imageprofil{
-        position: relative  ;
         height: 40px;
-        margin-top: 17px;
         margin-right: 25px;
-    }
-
-    .imageprofil:hover{
-        height: 60px;
-        background-color: whitesmoke;
-        border-radius: 100%;
-        margin-top: 7px;
+        display: flex;
+        margin-top: -7px;
     }
 
     .infoprofil{
-        height: 15px;
-        margin-top: 30px;
+      position: relative;
+      height: 15px;
+      margin: -26px 2px 0px 55px;
     }
 
-    .infoprofil:hover{
-        height: 35px;
-        background-color: whitesmoke;
-        border-radius: 100%;
-        margin-top: 20px;    
+    .profile{
+      position: relative;
+      margin: 19px ;
+      padding: 5px;
+      background-color: #6d7fe6;
+      border: none;
     }
+
+    .profile:hover{
+      background-color: white;
+      border-radius: 25px;
+    }
+
+    /* .modal{
+      position: absolute;
+      opacity: 0;
+      visibility: hidden;
+      margin: 80px 0px 0px 1220px;
+      background-color: darkorange;
+      padding:8px;
+    }
+
+    .modal a:hover{
+      color: whitesmoke;
+    }
+
+    button:focus + .modal{
+      opacity: 1;
+      visibility: visible;
+    } */
+
+    .modal {
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+  margin: 80px 0px 0px 1220px;
+  background-color: darkorange;
+  padding: 8px;
+}
+
+.modal a:hover {
+  color: whitesmoke;
+}
+
+.modal-show {
+  opacity: 1;
+  visibility: visible;
+}
+
+button.profile:focus {
+  outline: none;
+}
+
+button.profile:hover {
+  cursor: pointer;
+}
+
+  
+    
 /* ########################################################################################### */
                                     /* CSS POUR LES HOMES */
 /* ########################################################################################### */
@@ -174,8 +221,50 @@
 
     <img class="logo" src="{% static 'application_web_aky/images/logosansbg.png' %}" alt="">
     <a href={{ home }} class="bord">Tableau de bord</a> 
-    <img src="{% static 'application_web_aky/images/iprofil.png' %}" alt="imageprofil" class="imageprofil">
-    <a href={{ profile }}><img src="{% static 'application_web_aky/images/bas.png' %}" alt="icone profil" class="infoprofil"></a>
+
+    <!-- <a href={{ profile }} class="profil">
+
+      <img src="{% static 'application_web_aky/images/iprofil.png' %}" alt="imageprofil" class="imageprofil">
+      <img src="{% static 'application_web_aky/images/bas.png' %}" alt="icone profil" class="iconeprofil">
+
+    </a> -->
+
+    <!-- <button class="profile">
+      <img src="{% static 'application_web_aky/images/iprofil.png' %}" alt="imageprofil" class="imageprofil">
+      <img src="{% static 'application_web_aky/images/bas.png' %}" alt="icone profil" class="infoprofil">
+    </button>
+
+    <div class="modal">
+
+      <div style="display: flex;">
+        <img style="height: 22px; padding-top: 3px;" src="{% static 'application_web_aky/images/iconeprofil.png' %}" alt="imageprofil" class="imageprofil">
+        <a class="profiles" href={{ profile }} onclick="return false;" style="color: black; font-size: 15px; font-family: Cambria; margin-left: -15px; cursor: pointer;">Mon profile</a><br><br>
+      </div>
+
+      <div style="display: flex;">
+        <img style="height: 22px; padding-top: 3px;" src="{% static 'application_web_aky/images/logout.png' %}" alt="image deconnexion" class="imageprofil">
+        <a class="deconnexion" href={{ profile }} onclick="return false;" style="color: black; font-size: 15px; font-family: Cambria; margin-left: -15px; cursor: pointer;">Déconnexion</a>
+      </div>
+
+    </div> -->
+
+    <button class="profile" onclick="toggleModal()">
+      <img src="{% static 'application_web_aky/images/iprofil.png' %}" alt="imageprofil" class="imageprofil">
+      <img src="{% static 'application_web_aky/images/bas.png' %}" alt="icone profil" class="infoprofil">
+    </button>
+    
+    <div class="modal" id="modal">
+      <div style="display: flex;">
+        <img style="height: 22px; padding-top: 3px;" src="{% static 'application_web_aky/images/iconeprofil.png' %}" alt="imageprofil" class="imageprofil">
+        <a class="profiles" href="{{ profile }}" style="color: black; font-size: 15px; font-family: Cambria; margin-left: -15px; cursor: pointer;">Mon profil</a><br><br>
+      </div>
+      <div style="display: flex;">
+        <img style="height: 22px; padding-top: 3px;" src="{% static 'application_web_aky/images/logout.png' %}" alt="image deconnexion" class="imageprofil">
+        <a class="deconnexion" href="{% url 'logout' %}" style="color: black; font-size: 15px; font-family: Cambria; margin-left: -15px; cursor: pointer;">Déconnexion</a>
+      </div>
+    </div>
+    
+
   </header>
 
 
@@ -186,5 +275,13 @@
     {% endblock %}  
 
   </main>
+
+  <script>
+    function toggleModal() {
+      var modal = document.getElementById("modal");
+      modal.classList.toggle("modal-show");
+    }
+  </script>
+
 </body>
 </html>
