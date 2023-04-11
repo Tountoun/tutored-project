@@ -3,51 +3,9 @@
 {% else %}
   {% include 'base.html' with profile="/aky/etudiant/profile" home="/aky/etudiant" %}
 {% endif %}{% load static %}
+<link rel="stylesheet" href="{% static 'profile.css' %}">
 
-<style>
-
-	body{
-		margin-bottom: 0;
-	}
-
-	.blocprincipal{
-		background-color: rgb(177, 177, 126); 
-		font-family: Cambria;
-		margin: 24px 250px;
-		padding: 6px 0px;
-	}
-
-	.profile{
-		background-color: white;
-		width: 60px;
-		padding: 1px;
-		border-radius: 50%;
-	}
-
-	.username{
-		margin-top: 2px;
-		font-style: italic;
-	}
-
-	.form-control{
-		width: 400px;
-		height: 30px;
-		border-radius: 15px;
-		border: none;
-		margin: 10px;
-		padding-left: 15px;
-		font-size: 17px;
-		background-color: aliceblue;
-		font-family: cambria;
-	}
-
-	.libelle{
-		font-size: large;
-	}
-
-</style>
-
-<body>
+<main>
 	<center class="blocprincipal">
 		<div class="">
 			<h1 class="">Paramètres du compte</h1>
@@ -55,7 +13,7 @@
 				<div class="">
 					<div class="">
 						<div class="">
-							<img src="{{ user.photo_profile.url }}" alt="Image" class="profile">
+							<img src="{{ user.photo_profile.url }}" alt="Image" class="profile_user">
 						</div>
 						<h4 class="username">{{ user.username }}</h4>
 					</div>
@@ -129,6 +87,6 @@
 			</div>
 		</div>
 	</center>
-</body>
+</main>
 
 {% include 'footer.html' %}

@@ -1,105 +1,11 @@
 {% include 'base.html' with profile="/aky/etudiant/profile" home="/aky/etudiant" %}
 {% load static %}
+<link rel="stylesheet" href="{% static 'depot.css' %}">
 
   <main>
          
     {% block content %}
     
-    <style>
-     .container-fluid {
-     width: 700px;
-     margin: 0px auto;
-     margin-top: 3px;
-     }
-     form {
-          margin: 20px auto;
-          padding: 8px 75px;
-          width: 500px;
-     }    
-
-     .color{
-          background-color: rgb(146, 140, 133);
-
-     }
-     .form-desc {
-          width: 500px;
-          margin-bottom: 10px;
-          font-size: 20px;
-          border-radius: 25px;
-          padding: 10px;
-          border: none;
-          font-family: Cambria;
-          height: 3cm;
-     }
-
-     .form-theme {
-          width: 500px;
-          margin-bottom: 10px;
-          font-size: 20px;
-          border-radius: 25px;
-          padding: 10px;
-          border: none;
-          font-family: Cambria;
-     }
-
-     .form-media {
-          width: 500px;
-          margin-bottom: 10px;
-          font-size: 20px;
-          border-radius: 25px;
-          padding: 10px;
-          background-color: white;
-          font-family: Cambria;
-     }
-
-     .form-num {
-          width: 500px;
-          margin-bottom: 10px;
-          font-size: 20px;
-          border-radius: 25px;
-          padding: 10px;
-          border: none;
-          font-family: Cambria;
-     }
-
-     .form-titre {
-          width: 500px;
-          margin-bottom: 10px;
-          font-size: 20px;
-          border-radius: 25px;
-          padding: 10px;
-          border: none;
-          font-family: Cambria;
-          height: 1.5cm;
-     }
-
-
-     input[type=submit] {
-          padding: 10px;
-          font-size: 28px;
-          border: none;
-          background-color: #f1f1f1;
-          color: whitesmoke;
-     }
-     input[type=submit]:hover {
-          background-color: #f2f2f2;
-          cursor: pointer;
-     }
-
-     .lib{
-          color: white;
-          font-size: 20px;
-          margin-bottom: 3px;
-     }
-
-     .error{
-          font-style: italic;
-          text-align: center;
-          color: red;
-     }
-
-     </style>
-
     <div class="container-fluid">
 
           <h2 style="text-align: center; ">Veuillez remplir le formulaire de depôt ci-dessous !</h1>

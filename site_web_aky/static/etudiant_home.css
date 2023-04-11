@@ -29,7 +29,7 @@
         padding: 5px 30px;
         color: whitesmoke;
         background-color: blue;
-        margin: 17px 20px 17px 900px;
+        margin: 17px 20px 17px 910px;
       }
   
       .bord:hover{
@@ -114,95 +114,73 @@
   button.profile:hover {
     cursor: pointer;
   }
-
-    .container-fluid {
-        width: 700px;
-        margin: 0px auto;
-        margin-top: 3px;
-    }
-    form {
-         margin: 20px auto;
-         padding: 8px 75px;
-         width: 500px;
-    }    
-
-    .color{
-         background-color: rgb(146, 140, 133);
-
-    }
-    .form-desc {
-         width: 500px;
-         margin-bottom: 10px;
-         font-size: 20px;
-         border-radius: 25px;
-         padding: 10px;
-         border: none;
-         font-family: Cambria;
-         height: 3cm;
-    }
-
-    .form-theme {
-         width: 500px;
-         margin-bottom: 10px;
-         font-size: 20px;
-         border-radius: 25px;
-         padding: 10px;
-         border: none;
-         font-family: Cambria;
-    }
-
-    .form-media {
-         width: 500px;
-         margin-bottom: 10px;
-         font-size: 20px;
-         border-radius: 25px;
-         padding: 10px;
-         background-color: white;
-         font-family: Cambria;
-    }
-
-    .form-num {
-         width: 500px;
-         margin-bottom: 10px;
-         font-size: 20px;
-         border-radius: 25px;
-         padding: 10px;
-         border: none;
-         font-family: Cambria;
-    }
-
-    .form-titre {
-         width: 500px;
-         margin-bottom: 10px;
-         font-size: 20px;
-         border-radius: 25px;
-         padding: 10px;
-         border: none;
-         font-family: Cambria;
-         height: 1.5cm;
-    }
-
-
-    input[type=submit] {
-         padding: 10px;
-         font-size: 28px;
-         border: none;
-         background-color: #f1f1f1;
-         color: whitesmoke;
-    }
-    input[type=submit]:hover {
-         background-color: #f2f2f2;
-         cursor: pointer;
-    }
-
-    .lib{
-         color: white;
-         font-size: 20px;
-         margin-bottom: 3px;
-    }
-
-    .error{
-         font-style: italic;
-         text-align: center;
-         color: red;
-    }
+  
+    
+      
+  /* ########################################################################################### */
+                                      /* CSS POUR LES HOMES */
+  /* ########################################################################################### */
+  
+      .libellee{
+        font-family: Cambria;
+        letter-spacing: 5;
+        margin-top: 5%;
+        font-size: 25px;
+        font-weight: bold;
+        margin-left: 26%;
+      }
+  
+      .choix1{
+        display: flex;
+      }
+  
+      .c1{
+        font-family: Cambria;
+        color: black;
+        text-decoration: none;
+        font-size: 30px;
+        font-weight: bold;
+        margin: 5% 15% 0% 25%;
+        background-color: rgb(146, 140, 133);
+        padding: 16px 22px 8px 22px;
+        border-radius: 20%;
+      }
+  
+      .recherche{
+        font-family: Cambria;
+        color: black;
+        text-decoration: none;
+        font-size: 30px;
+        margin: 4% 0% 0% 0%;
+        background-color: rgb(146, 140, 133);
+        padding: 25px 50px;
+        border-radius: 20px;
+      }
+  
+      .c1:hover{
+        background-color: rgb(139, 139, 253);
+      }
+  
+      .recherche:hover{
+        background-color: rgb(139, 139, 253);
+      }
+  
+      .choix2{
+        display: flex;
+        margin-top: 4%;
+      }
+  
+      .depot{
+        font-family: Cambria;
+        color: black;
+        text-decoration: none;
+        font-size: 30px;
+        margin: 4% 0% 0% 0%;
+        background-color: rgb(146, 140, 133);
+        padding: 25px 68px;
+        border-radius: 20px;
+      }
+  
+      .depot:hover{
+        background-color: rgb(139, 139, 253);
+      }

@@ -1,0 +1,147 @@
+html, body{
+    height: 100%;
+    margin: 0%;
+  }
+
+  
+  body{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    display: flex;
+    flex-direction: column;
+  }
+
+
+  header{
+    display: flex;
+    height: 75px;
+    width: 100%;
+    background-color: #6d7fe6;
+  }
+
+  .logo{
+    width: 100px;
+    margin: 0px 0px 0px 8px;
+  }
+
+  .accueil{
+    font-size: 22px;
+    border-radius: 50px;
+    height: 30px;
+    padding: 5px 30px;
+    color: whitesmoke;
+    background-color: #526bad;
+    margin: 17px 45px;
+
+  }
+
+  .accueil:hover{
+    background-color: rgb(7, 7, 190);
+  }
+
+  .connexion{
+    font-size: 22px;
+    border-radius: 50px;
+    height: 30px;
+    padding: 5px 30px;
+    color: whitesmoke;
+    background-color: #526bad;
+    margin: 17px 0px 17px 805px;
+  }
+
+  .connexion:hover{
+    background-color: rgb(7, 7, 190);
+  }
+
+  main{
+    flex-grow: 1;
+    display: flex;
+  }
+
+  footer{
+    margin-top: 0;
+    position: relative;
+    height: 75px;
+    width: 100%;
+    background-color: #6d7fe6;
+  }
+
+  .pied{
+    font-family: system-ui;
+    font-size: 18px;
+    font-weight: 180;
+    margin: 25px;
+    text-align: center;
+  }
+
+  a{
+    text-decoration: none;
+  }
+
+  .timage{
+    margin-top: 6%;
+    width: 30%;
+    opacity: 1;
+    height: 70%;
+  }
+
+  .form{
+    margin-left: 28%;
+    width: 480px;
+  }
+
+  .email{
+    font-size: 20px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin:1% 0% 4% 2%;
+    color: whitesmoke;
+  }
+
+  .mail{
+    margin:1% 0% 4% 2%;
+    height: 45px;
+    width: 300px;
+    border-radius: 50px;
+    font-size: large;
+    font-family: Cambria;
+    padding-left: 20px;
+    border: none;
+    background-color: #d9d9d9;
+  }
+
+  .pass{
+    font-size: 20px;
+    font-family: Cambria;
+    margin:1% 0% 4% 2%;
+    color: whitesmoke;
+  }
+
+  .password{
+    margin:1% 0% 0% 2%;
+    height: 45px;
+    width: 300px;
+    border-radius: 50px;
+    font-size: 35px;
+    padding-left: 20px;
+    border: none;
+    background-color: #d9d9d9;
+  }
+  
+  .send{
+    height: 45px;
+    margin-top: -15px;
+    width: 300px;
+    border-radius: 50px;
+    font-size: larger;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    border: none;
+  }
+
+  .send:hover{
+    color: whitesmoke;
+    background-color: rgb(65, 63, 63);
+  }
+
+  .prof{
+    height: 70px;
+    padding: 17px 0% 0px 34%;
+  }
