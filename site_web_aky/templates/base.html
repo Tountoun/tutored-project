@@ -11,32 +11,6 @@
     <img class="logo" src="{% static 'application_web_aky/images/logosansbg.png' %}" alt="">
     <a href={{ home }} class="bord">Tableau de bord</a> 
 
-    <!-- <a href={{ profile }} class="profil">
-
-      <img src="{% static 'application_web_aky/images/iprofil.png' %}" alt="imageprofil" class="imageprofil">
-      <img src="{% static 'application_web_aky/images/bas.png' %}" alt="icone profil" class="iconeprofil">
-
-    </a> -->
-
-    <!-- <button class="profile">
-      <img src="{% static 'application_web_aky/images/iprofil.png' %}" alt="imageprofil" class="imageprofil">
-      <img src="{% static 'application_web_aky/images/bas.png' %}" alt="icone profil" class="infoprofil">
-    </button>
-
-    <div class="modal">
-
-      <div style="display: flex;">
-        <img style="height: 22px; padding-top: 3px;" src="{% static 'application_web_aky/images/iconeprofil.png' %}" alt="imageprofil" class="imageprofil">
-        <a class="profiles" href={{ profile }} onclick="return false;" style="color: black; font-size: 15px; font-family: Cambria; margin-left: -15px; cursor: pointer;">Mon profile</a><br><br>
-      </div>
-
-      <div style="display: flex;">
-        <img style="height: 22px; padding-top: 3px;" src="{% static 'application_web_aky/images/logout.png' %}" alt="image deconnexion" class="imageprofil">
-        <a class="deconnexion" href={{ profile }} onclick="return false;" style="color: black; font-size: 15px; font-family: Cambria; margin-left: -15px; cursor: pointer;">Déconnexion</a>
-      </div>
-
-    </div> -->
-
     <button class="profile" onclick="toggleModal()">
       <img src="{% static 'application_web_aky/images/iprofil.png' %}" alt="imageprofil" class="imageprofil">
       <img src="{% static 'application_web_aky/images/bas.png' %}" alt="icone profil" class="infoprofil">
@@ -45,11 +19,11 @@
     <div class="modal" id="modal">
       <div style="display: flex;">
         <img style="height: 22px; padding-top: 3px;" src="{% static 'application_web_aky/images/iconeprofil.png' %}" alt="imageprofil" class="imageprofil">
-        <a class="profiles" href="{{ profile }}" style="color: black; font-size: 15px; font-family: Cambria; margin-left: -15px; cursor: pointer;">Mon profil</a><br><br>
+        <a class="profiles" href="{{ profile }}" style="color: black; font-size: 15px; font-family: Cambria; margin-left: -15px;">Mon profil</a><br><br>
       </div>
       <div style="display: flex;">
         <img style="height: 22px; padding-top: 3px;" src="{% static 'application_web_aky/images/logout.png' %}" alt="image deconnexion" class="imageprofil">
-        <a class="deconnexion" href="{% url 'logout' %}" style="color: black; font-size: 15px; font-family: Cambria; margin-left: -15px; cursor: pointer;">Déconnexion</a>
+        <a class="deconnexion" href="{% url 'logout' %}" style="color: black; font-size: 15px; font-family: Cambria; margin-left: -15px;">Déconnexion</a>
       </div>
     </div>
     
