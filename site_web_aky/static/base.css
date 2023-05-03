@@ -1,0 +1,118 @@
+
+    html, body{
+        height: 100%;
+        margin: 0%;
+        min-height: 100vh;
+      }
+  
+      body{
+        font-family: Georgia,;
+        flex-direction: column;
+      }
+  
+      header{
+        display: flex;
+        height: 75px;
+        width: 100%;
+        background-color: #6d7fe6;
+      }
+  
+      .logo{
+        width: 100px;
+        margin: 0px 0px 0px 8px;
+      }
+  
+      .bord{
+        font-size: 22px;
+        border-radius: 50px;
+        height: 30px;
+        padding: 5px 30px;
+        color: whitesmoke;
+        background-color: blue;
+        margin: 17px 20px 17px 910px;
+      }
+  
+      .bord:hover{
+        background-color: rgb(7, 7, 190);
+      }
+  
+      main{
+        position: relative;
+        flex-grow: 1;
+      }
+  
+      a, button{
+        text-decoration: none;
+      }
+  
+      .imageprofil{
+          height: 40px;
+          margin-right: 25px;
+          display: flex;
+          margin-top: -7px;
+      }
+  
+      .infoprofil{
+        position: relative;
+        height: 15px;
+        margin: -26px 2px 0px 55px;
+      }
+  
+      .profile{
+        position: relative;
+        margin: 19px ;
+        padding: 5px;
+        background-color: #6d7fe6;
+        border: none;
+      }
+  
+      .profile:hover{
+        background-color: white;
+        border-radius: 25px;
+      }
+  
+      /* .modal{
+        position: absolute;
+        opacity: 0;
+        visibility: hidden;
+        margin: 80px 0px 0px 1220px;
+        background-color: darkorange;
+        padding:8px;
+      }
+  
+      .modal a:hover{
+        color: whitesmoke;
+      }
+  
+      button:focus + .modal{
+        opacity: 1;
+        visibility: visible;
+      } */
+  
+      .modal {
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    margin: 80px 0px 0px 1220px;
+    background-color: darkorange;
+    padding: 8px;
+  }
+  
+  .modal a:hover {
+    color: whitesmoke;
+  }
+  
+  .modal-show {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  button.profile:focus {
+    outline: none;
+  }
+  
+  button.profile:hover {
+    cursor: pointer;
+  }
+  
+    
