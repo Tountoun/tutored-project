@@ -7,37 +7,42 @@
 </head>
 <body>
   <header>
-
-    <img class="logo" src="{% static 'application_web_aky/images/logosansbg.png' %}" alt="">
-    <a href={{ home }} class="bord">Tableau de bord</a> 
-
-    <button class="profile" onclick="toggleModal()">
-      <img src="{% static 'application_web_aky/images/iprofil.png' %}" alt="imageprofil" class="imageprofil">
-      <img src="{% static 'application_web_aky/images/bas.png' %}" alt="icone profil" class="infoprofil">
-    </button>
+    <ul>
+      <li>
+        <img class="logo" src="{% static 'application_web_aky/images/logosansbg.png' %}" alt="">
+      </li>
+      <li style="float: right;">
+        <button class="profile" onclick="toggleModal()">
+          <img src="{% static 'application_web_aky/images/iprofil.png' %}" alt="imageprofil" class="image-profile">
+          <img src="{% static 'application_web_aky/images/bas.png' %}" alt="icone profil" class="info-profile">
+        </button>
+      </li>
+      <li style="float: right">
+        <div>
+          <a href={{ home }}>Tableau de bord</a>
+        </div>
+      </li>
+    </ul>
     
     <div class="modal" id="modal">
-      <div style="display: flex;">
-        <img style="height: 22px; padding-top: 3px;" src="{% static 'application_web_aky/images/iconeprofil.png' %}" alt="imageprofil" class="imageprofil">
-        <a class="profiles" href="{{ profile }}" style="color: black; font-size: 15px; font-family: Cambria; margin-left: -15px;">Mon profil</a><br><br>
+      <div>
+        <a href="{{ profile }}">
+          <img src="{% static 'application_web_aky/images/iconeprofil.png' %}" alt="imageprofil">
+          <span>Mon profile</span>
+        </a>
       </div>
-      <div style="display: flex;">
-        <img style="height: 22px; padding-top: 3px;" src="{% static 'application_web_aky/images/logout.png' %}" alt="image deconnexion" class="imageprofil">
-        <a class="deconnexion" href="{% url 'logout' %}" style="color: black; font-size: 15px; font-family: Cambria; margin-left: -15px;">Déconnexion</a>
+      <div>
+        <a href="{% url 'logout' %}">
+          <img src="{% static 'application_web_aky/images/logout.png' %}" alt="imageprofil" class="imageprofil">
+          <span>Déconnexion</span>
+        </a>
       </div>
     </div>
-    
-
   </header>
-
-
-  <main>
 
     {% block content %}
            
     {% endblock %}  
-
-  </main>
 
   <script>
     function toggleModal() {

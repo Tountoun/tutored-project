@@ -1,119 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600;800&family=VT323&display=swap');
 
-    html, body{
-        height: 100%;
-        margin: 0%;
-        min-height: 100vh;
-      }
-  
-      body{
-        font-family: Georgia,;
-        flex-direction: column;
-      }
-  
-      header{
-        display: flex;
-        height: 75px;
-        width: 100%;
-        background-color: #6d7fe6;
-      }
-  
-      .logo{
-        width: 100px;
-        margin: 0px 0px 0px 8px;
-      }
-  
-      .bord{
-        font-size: 22px;
-        border-radius: 50px;
-        height: 30px;
-        padding: 5px 30px;
-        color: whitesmoke;
-        background-color: blue;
-        margin: 17px 20px 17px 910px;
-      }
-  
-      .bord:hover{
-        background-color: rgb(7, 7, 190);
-      }
-  
-      main{
-        position: relative;
-        flex-grow: 1;
-      }
-  
-      a, button{
-        text-decoration: none;
-      }
-  
-      .imageprofil{
-          height: 40px;
-          margin-right: 25px;
-          display: flex;
-          margin-top: -7px;
-      }
-  
-      .infoprofil{
-        position: relative;
-        height: 15px;
-        margin: -26px 2px 0px 55px;
-      }
-  
-      .profile{
-        position: relative;
-        margin: 19px ;
-        padding: 5px;
-        background-color: #6d7fe6;
-        border: none;
-      }
-  
-      .profile:hover{
-        background-color: white;
-        border-radius: 25px;
-      }
-  
-      /* .modal{
-        position: absolute;
-        opacity: 0;
-        visibility: hidden;
-        margin: 80px 0px 0px 1220px;
-        background-color: darkorange;
-        padding:8px;
-      }
-  
-      .modal a:hover{
-        color: whitesmoke;
-      }
-  
-      button:focus + .modal{
-        opacity: 1;
-        visibility: visible;
-      } */
-  
-    .modal {
-    position: absolute;
-    opacity: 0;
-    visibility: hidden;
-    margin: 80px 0px 0px 1220px;
-    background-color: darkorange;
-    padding: 8px;
-  }
-  
-  .modal a:hover {
-    color: whitesmoke;
-  }
-  
-  .modal-show {
-    opacity: 1;
-    visibility: visible;
-    z-index: 99999;
-  }
-  
-  button.profile:focus {
-    outline: none;
-  }
-  
-  button.profile:hover {
-    cursor: pointer;
-  }
-  
-    
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body{
+  min-height: 100vh;
+  width: 100%;
+}
+header{
+  height: 65px;
+  background-color: #6d7fe6;
+  margin-bottom: 30px;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+li {
+  float: left;
+}
+a {
+  text-decoration: none;
+}
+.logo{
+  width: 100px;
+}
+li a{
+  color: white;
+  font-size: 17px;
+}
+li div {
+  margin-top: 10px;
+  margin-right: 20px;
+  height: 40px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: blue;
+  border-radius: 5px;
+}
+li div:hover {
+  background: rgb(7, 7, 190);
+}
+.profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.profile img.image-profile {
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  margin: 0;
+}
+.profile img.info-profile {
+  width: 10px;
+  height: 10px;
+  margin-left: -5px;
+  margin-right: 10px;
+  padding: 0;
+}
+.profile {
+  background-color: #6d7fe6;
+  border: none;
+}
+.modal {
+  width: 200px;
+  position: absolute;
+  opacity: 0;
+  top: 65px;
+  right: 4px;
+  visibility: hidden;
+  padding: 8px;
+  border-radius: 5px;
+  box-shadow: 0px 1px 2px 1px rgba(186, 186, 196, 0.5);
+}
+.modal div:hover {
+  background: rgb(186, 186, 196);
+  border-radius: 5px;
+}
+.modal div {
+  height: 50px;
+  padding-top: 10px;
+}
+.modal div a img {
+  height: 22px;
+  padding-top: 3px;
+}
+.modal div a span {
+  font-size: 17px;
+  margin-left: 10px;
+}
+.modal div a {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin-left: 15px;
+  color: black;
+}
+.modal-show {
+  opacity: 1;
+  visibility: visible;
+  z-index: 9999;
+}
+.profile:focus {
+  outline: none;
+}
+.profile:hover {
+  cursor: pointer;
+}

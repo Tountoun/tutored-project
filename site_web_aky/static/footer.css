@@ -1,0 +1,15 @@
+footer {
+    height: 75px;
+    position: sticky;
+    top: 100vh;
+    width: 100%;
+    background-color: rgb(139, 139, 253);
+}
+.pied {
+     padding-top: 20px;
+     font-family: system-ui;
+     font-size: 18px;
+     font-weight: 180;
+     margin: 25px;
+     text-align: center;
+}
