@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User, auth
 from django.db.models import Q
+from django.contrib.auth.decorators import login_required
 from django.http.response import FileResponse, HttpResponse
 from django.conf import settings
 from django.contrib import messages
@@ -40,10 +41,14 @@ def index(request):
           return redirect('./')
      return render(request, 'index.html')
 
-
+@login_required(login_url='/')
 def home_admin(request):
-     return render(request, 'admin_home.html')
+     admin = Administrateur.objects.filter(user=request.user)
+     if admin.exists():
+          return render(request, 'admin_home.html', {"admin": admin.get()})
+     return redirect('/')
 
+@login_required(login_url='/')
 def autoriser(request):
      if request.user.is_authenticated:
           user = User.objects.get(username=request.user.username)
@@ -85,8 +90,12 @@ def autoriser(request):
      return redirect('index')
 
 
+@login_required(login_url='/')
 def home_etudiant(request):
-     return render(request, 'etudiant_home.html')
+     etudiant = Etudiant.objects.filter(user=request.user)
+     if etudiant.exists():
+          return render(request, 'etudiant_home.html', {"etudiant": etudiant.get()})
+     return redirect('/')
 
 
 
@@ -154,8 +163,9 @@ def rechercher(request):
                'resultats': len(memoires_list)
           }
           return render(request, 'recherche.html', context)
-     return redirect("index")
+     return redirect("/")
 
+@login_required(login_url="/")
 def deposer(request):
      user = User.objects.get(username=request.user.username)
      etudiant = Etudiant.objects.get(user=user)
@@ -179,9 +189,9 @@ def deposer(request):
                     etudiant.deposer = False
                     memoire.save()
                     etudiant.save()
-                    return redirect('index')
+                    return redirect('home_etudiant')
                messages.info(request, 'Votre formualire n\'est pas valide !!!')
-               return redirect('index')
+               return redirect('deposer')
      else:
           messages.info(request, 'Vous n\'êtes pas autorisé à faire un dépôt !!!')
      form_depot = MemoireForm()
@@ -189,7 +199,6 @@ def deposer(request):
           'form': form_depot,
           'etudiant': etudiant
      }
-
      return render(request, 'depot.html', context)
 
 
@@ -205,6 +214,7 @@ def consulter(request, memoire_pk):
      return redirect('./')
 
 
+@login_required(login_url="/")
 def profile(request):
      if request.user.is_authenticated:
           is_admin = True
@@ -218,21 +228,22 @@ def profile(request):
           elif Administrateur.objects.filter(user=user) and request.get_full_path() == '/aky/admin/profile':
                profile = Administrateur.objects.filter(user=user).get()
                parcours = Parcours.objects.filter(adminstrateur=profile)
-               etablissement = parcours[0].etablissement
-               libelles = []
-               for parc in parcours:
-                    libelles.append(parc.libelle)
-               parcours = []
-               for i, libelle in enumerate(libelles):
-                    parcours.append({'num': i + 1, 'libelle': libelle})
+               if parcours:
+                    etablissement = parcours[0].etablissement
+                    libelles = []
+                    for parc in parcours:
+                         libelles.append(parc.libelle)
+                    parcours = []
+                    for i, libelle in enumerate(libelles):
+                         parcours.append({'num': i + 1, 'libelle': libelle})
           else:
                return render(request, '404.html')
           context = {
                'user': user,
                'profile': profile,
                'is_admin': is_admin,
-               'parcours': parcours,
-               'etablissement': etablissement
+               'parcours': parcours if parcours else "",
+               'etablissement': etablissement if etablissement else ""
           }
           return render(request, 'profile.html', context)
      return redirect('index')

@@ -1,7 +1,67 @@
-{% include 'base.html' with profile="admin/profile" home="admin" %}
+{% include 'base.html' with profile="admin/profile" home="admin" user_=admin %}
 {% load static %}
-<link rel="stylesheet" href="{% static 'admin_home.css' %}">
-<link rel="stylesheet" href="{% static 'base.css' %}">
+
+<style>
+  .libellee {
+  margin: 0px auto;
+  text-align: center;
+  margin-top: 60px;
+  letter-spacing: 1;
+  font-size: 40px;
+}
+
+.block {
+  margin: 5rem auto;
+  margin-left: 10px;
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  justify-items: center;
+}
+
+.choix1,
+.choix2 {
+  grid-column: span 2;
+  display: grid;
+  gap: 60px;
+  grid-template-columns: 1fr 1fr;
+  justify-items: end;
+}
+
+.c1 {
+  grid-column: span 1;
+  color: black;
+  text-decoration: none;
+  font-size: 30px;
+  width: 50px;
+  height: 50px;
+  background: rgb(146, 140, 133);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.recherche,
+.depot {
+  color: black;
+  text-decoration: none;
+  font-size: 30px;
+  padding: 0px 5px 15px;
+}
+
+.c1:hover {
+  background-color: rgb(139, 139, 253);
+}
+
+.recherche:hover,
+.depot:hover {
+  background-color: rgb(139, 139, 253);
+  border-radius: 5px;
+  width: 100%;
+}
+</style>
 <main>
 
     {% block content %}

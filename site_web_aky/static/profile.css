@@ -1,33 +1,62 @@
-.blocprincipal{
-    background-color: rgb(146, 140, 133); 
-    margin: 24px 250px;
-    padding: 6px 0px;
+.container {
+    margin: 0 auto;
+    width: 800px;
+    margin-bottom: 90px;
+    padding: 0 40px;
+    padding-bottom: 60px;
+    background: #eee;
+    border-radius: 10px;
 }
 
-.profile_user{
-    background-color: white;
+h1 {
+    text-align: center;
+}
+
+.bloc-profile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+h4 {
+    margin-left: 20px;
+}
+
+h4::before {
+    content: '@';
+}
+
+.profile_user {
+    background-color: rgb(147, 137, 137);
+    padding: 2px;
     width: 60px;
-    padding: 1px;
+    height: 60px;
     border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.username{
-    margin-top: 2px;
-    font-style: italic;
+.profile_user img {
+    width: 100%;
+    height: 100%;
 }
 
-.form-control{
-    width: 400px;
-    height: 30px;
-    border-radius: 15px;
-    border: none;
-    margin: 10px;
-    padding-left: 15px;
+.form-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.libelle {
+    grid-column: span 1;
+    align-self: center;
     font-size: 17px;
-    background-color: aliceblue;
-    font-family: cambria;
 }
 
-.libelle{
-    font-size: large;
+.form-control {
+    padding: 5px;
+    font-size: 17px;
 }

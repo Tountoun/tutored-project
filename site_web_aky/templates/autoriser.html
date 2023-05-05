@@ -1,14 +1,14 @@
 {% include 'base.html' with profile="/aky/admin/profile" home="/aky/admin" %}
 {% load static %}
 <link rel="stylesheet" href="{% static 'autoriser.css' %}">
-<link rel="stylesheet" href="{% static 'base.css' %}">
+
 
   <main>
     {% block content %}
 
     <p class="texte">Liste des étudiants</p>
 
-    <form action="autoriser" method="POST" style="font-family:Cambria; font-size: 17px;">
+    <form action="./" method="POST" style="font-size: 17px;">
       {% csrf_token %}
       {% for etudiant in etudiants %}
            {% if etudiant.deposer == True %}
@@ -24,7 +24,7 @@
 
       {% endfor %}
       <center>
-        <input type="submit" value="Valider" style="margin-top: 2%; padding: 8px 40px; font-family: Cambria; font-size: 17px; background-color: black; color: whitesmoke; border-radius: 10px; border: none;">
+        <input type="submit" value="Valider" style="margin-top: 2%; padding: 8px 40px; font-size: 17px; background-color: black; color: whitesmoke; border-radius: 10px; border: none;">
       </center>
     </form>
 

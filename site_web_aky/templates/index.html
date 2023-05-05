@@ -4,63 +4,52 @@
 <head>
   <meta charset="UTF-8">
   <title>aky accueil</title>
-
   <link rel="stylesheet" href="{% static 'index.css' %}">
+  <link rel="stylesheet" href="{% static 'footer.css' %}">
 </head>
 <body>
   <header>
-
-    <img class="logo" src="{% static 'application_web_aky/images/logosansbg.png' %}" alt="">
-    <a href="{% url 'application_web_aky:index' %}" class="accueil">Accueil</a> 
-    <a href="{% url 'application_web_aky:index' %}" class="connexion">Se connecter</a> 
+    <ul>
+      <li>
+        <img class="logo" src="{% static 'application_web_aky/images/logosansbg.png' %}" alt="">
+      </li>
+      <li>
+        <div class="accueil">
+          <a href="{% url 'application_web_aky:index' %}" class="accueil">Accueil</a>
+        </div>
+      </li>
+      <li style="float: right">
+        <div>
+          <a href="{% url 'application_web_aky:index' %}" class="connexion">Se connecter</a>
+        </div>
+      </li>
+    </ul>
   </header>
-
-
   <main>
-
-    <img class="timage" src="{% static 'application_web_aky/images/livre.png' %}" alt="">
+    <div class="container">
+      <img class="image" src="{% static 'application_web_aky/images/livre.png' %}" alt="">
       
-    <form method="post" class="form" action="./">
-
-      <img class="prof" src="{% static 'application_web_aky/images/profil.png' %}" alt="">
-
-
-      <div style="  background-color: black; 
-                    padding: 20px 25px 50px 50px;
-                    opacity: 50%;
-                    margin:5% 15% 5% 0%;
-                    height: 270px;">
-        <!-- <ul>
-          {% for message in messages %}
-          <li class="{{ message.tags }}">{{ message }}</li>
-          {% endfor %}
-      </ul> -->
-  
-    
-      <input type="hidden" name="csrfmiddlewaretoken" value="SCXxQ3amifcmpHcjeZoFOpyyhoahtr3XGNA5lQ9vcZzADZ3SudXALKqycxxK1V9f">
-      <p>
-        <label for="id_username" class="email">Votre nom d'utilisateur<br></label>
-        {% csrf_token %}
-        <input class="mail" type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150" required="" id="id_username">
-      </p>
-      <p>
-        <label for="id_password" class="pass">Votre mot de passe<br></label>
-        {% csrf_token %}
-        <input class="password" type="password" name="password" autocomplete="current-password" required="" id="id_password">
-      </p>
-      <br><br><br>
-    
-      {% csrf_token %}
-      <button type="submit" class="send">Connexion</button>
-      </div>
-    </form>
-    
-
+      <form method="post" class="form" action="./">
+        <img class="icon" src="{% static 'application_web_aky/images/profil.png' %}" alt="">
+        <div>
+          <input type="hidden" name="csrfmiddlewaretoken" value="SCXxQ3amifcmpHcjeZoFOpyyhoahtr3XGNA5lQ9vcZzADZ3SudXALKqycxxK1V9f">
+          <div class="form-group">
+            <label for="id_username">Votre nom d'utilisateur</label>
+            {% csrf_token %}
+            <input type="text" name="username" required id="id_username">
+          </div>
+          <div class="form-group">
+            <label for="id_password">Votre mot de passe</label>
+            {% csrf_token %}
+            <input type="password" name="password" required id="id_password">
+          </div>
+          {% csrf_token %}
+          <input type="submit" value="Connexion"/>
+        </div>
+      </form>
+    </div>
   </main>
 
-
-  <footer>
-    <div class="pied">© aky_team | Tous droits réservés | 2023</div>
-  </footer>
+  {% include 'footer.html' %}
 </body>
 </html>
