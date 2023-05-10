@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User, auth
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
-from django.http.response import FileResponse, HttpResponse
+from django.http.response import FileResponse
 from django.conf import settings
 from django.contrib import messages
 
@@ -53,6 +53,7 @@ def autoriser(request):
      if request.user.is_authenticated:
           user = User.objects.get(username=request.user.username)
           if Administrateur.objects.filter(user=user).exists():
+               is_redirected = False
                if request.method == 'POST':
                     form_ids = request.POST.getlist('user_id')
                     ids_deposer = Etudiant.objects.all().filter(deposer=True).values('user_id')
@@ -65,7 +66,8 @@ def autoriser(request):
                          etudiant = Etudiant.objects.filter(user_id=user_id).get()
                          etudiant.deposer = True
                          etudiant.save()
-                    return render(request, 'autorisation_reussie.html')
+                    
+                    is_redirected = True
                admin = Administrateur.objects.get(user=user)
                parcours = Parcours.objects.filter(adminstrateur=admin)
                etudiants = []
@@ -83,7 +85,8 @@ def autoriser(request):
                               etudiant_dict['prenoms'] = user.first_name
                               etudiants.append(etudiant_dict)
                context = {
-                    'etudiants': etudiants
+                   'etudiants': etudiants,
+                   'is_redirected': is_redirected
                }
                return render(request, 'autoriser.html', context)
           return render(request, '404.html')
@@ -247,7 +250,3 @@ def profile(request):
           }
           return render(request, 'profile.html', context)
      return redirect('index')
-
-
-
-

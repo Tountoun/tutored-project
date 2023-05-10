@@ -7,9 +7,9 @@ urlpatterns = [
    
     path('', views.index, name='index'),
    
-    path('admin', views.home_admin, name='home_admin'),
+    path('admin/', views.home_admin, name='home_admin'),
    
-    path('etudiant', views.home_etudiant, name='home_etudiant'),
+    path('etudiant/', views.home_etudiant, name='home_etudiant'),
    
     path('etudiant/deposer/', views.deposer, name='deposer'),
    

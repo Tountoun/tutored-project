@@ -133,18 +133,13 @@ li div:hover {
       </li>
       <li style="float: right;">
         <button class="profile" onclick="toggleModal()">
-          {% if user_.photo_profile %}
-          <img src="{{ user_.photo_profile.url }}" alt="imageprofil" class="image-profile">
-          {% else %}
-          {{ hi}}
           <img src="{% static 'application_web_aky/images/iprofil.png' %}" alt="imageprofil" class="image-profile">
-          {% endif %}
           <img src="{% static 'application_web_aky/images/down.png' %}" alt="icone profil" class="info-profile">
         </button>
       </li>
       <li style="float: right">
         <div>
-          <a href={{ home }}>{{user_.photo_profile}}Tableau de bord</a>
+          <a href={{ home }}>Tableau de bord</a>
         </div>
       </li>
     </ul>
