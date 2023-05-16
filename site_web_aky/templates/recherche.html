@@ -5,8 +5,171 @@
 {% endif %}
 
 {% load static %}
-<link rel="stylesheet" href="{% static 'recherche.css' %}">
+<style>
+    .a1 {
+      display: flex;
+      border: 1px rgb(165, 163, 161) solid;
+      margin-top: 50px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      padding: 15px 20px 0px;
+      margin-left: 20px;
+    }
 
+    .a1:hover {
+      background-color: rgb(155, 155, 252);
+    }
+
+    .d1 {
+      display: flex;
+      border-bottom: 1px solid rgb(194, 193, 191);
+    }
+
+    .d1:hover{
+      background-color: whitesmoke;
+    }
+
+    .d0{
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      flex-wrap: nowrap;
+      border-bottom: 1px solid rgb(194, 193, 191);
+    }
+
+    .filtre {
+      height: 25px;
+      width: 30px;
+      margin: 0px;
+    }
+
+    .textefiltre {
+      color: black;
+      padding-top: 2px;
+      font-size: 20px;
+    }
+
+    .resultat {
+      flex-grow: 1;
+      margin-left: 50px;
+      padding-top: 80px;
+      padding-left: 50px;
+    }
+
+    .form-search{
+      flex-grow: 2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-left: 20px;
+      margin-top: 50px;
+    }
+
+    input[type="text"] {
+      padding: 12px;
+      font-family: Cambria;
+      border: none;
+      height: 60px;
+      background-color: rgb(175, 175, 174);
+      border-radius: 4px 0 0 4px;
+      font-size: 20px;
+      width: 270px;
+    }
+    
+    input[type="checkbox"] {
+      margin: 8px;
+    }
+
+    button[type="submit"] {
+      font-family: Cambria;
+      padding: 8px 16px;
+      background-color: rgb(139, 139, 253);
+      color: black;
+      border: none;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+      font-size: 25px;
+      height: 60px;
+    }
+
+    .imemoire {
+      display: flex;
+      height: 3cm;
+      width: 3cm;
+      border: black 1px solid;
+      margin: 15px 20px 0px 5px;
+      padding: 8px;
+      background-color: rgb(194, 193, 191);
+    }
+
+    .imemoire:hover{
+      background-color: #6d7fe6;
+    }
+
+    .block {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    p {
+      font-size: 16px;
+    }
+    span {
+      font-size: 20px;
+      font-weight: 400;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .flex {
+      display: flex;
+    }
+
+    .tform {
+      padding: 20px;
+      font-family: Arial;
+      border-right: 1px solid black;
+      height: 100vh;
+      margin: 15px 20px 0px;
+      transition: 0.5s ease;
+    }
+
+    .tbouton {
+      padding: 15px 20px;
+      background-color: #6d7fe6;
+      width: 100%;
+      font-size: 20px;
+      color: white;
+      font-family: Arial;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .tbouton:hover {
+      background-color: blue;
+      cursor: pointer;
+    }
+
+    .hidden{
+      display: none;
+    }
+    .flex .d1 .consulter-btn {
+      position: absolute;
+      background: #6d7fe6;
+      color: white;
+      margin-top: 40px;
+      right: 10px;
+      border: none;
+      padding: 15px 20px;
+      font-size: 20px;
+      border-radius: 5px;
+    }
+    .flex .d1 .consulter-btn:hover {
+      cursor: pointer;
+      background-color: blue;
+    }
+   .tbloc {
+      margin-bottom: 40px;
+   }
+</style>
 <main>
 
   {% block content %}

@@ -1,7 +1,100 @@
 {% include 'base.html' with profile="/aky/etudiant/profile" home="/aky/etudiant" %}
 {% load static %}
-<link rel="stylesheet" href="{% static 'depot.css' %}">
+     <style>
+     .container-fluid {
+        width: 700px;
+        margin: 0px auto;
+        margin-top: 3px;
+    }
+    form {
+         margin: 20px auto;
+         padding: 8px 75px;
+    }    
 
+    .color{
+     background: #eee;
+     border-radius: 15px;
+
+    }
+    .form-desc {
+         width: 500px;
+         margin-bottom: 10px;
+         margin-left: 22px;
+         font-size: 18px;
+         border-radius: 25px;
+         padding: 10px;
+         border: none;
+         height: 3cm;
+    }
+
+    .form-theme {
+         width: 500px;
+         margin-left: 22px;
+         margin-bottom: 10px;
+         font-size: 18px;
+         border-radius: 25px;
+         padding: 10px;
+         border: none;
+         background-color: white;
+    }
+
+    .form-media {
+         width: 500px;
+         margin-left: 22px;
+         margin-bottom: 10px;
+         font-size: 18px;
+         border-radius: 25px;
+         padding: 10px;
+         background-color: white;
+    }
+
+    .form-num {
+         width: 500px;
+         margin-left: 22px;
+         margin-bottom: 10px;
+         font-size: 18px;
+         border-radius: 25px;
+         padding: 10px;
+         border: none;
+    }
+
+    .form-titre {
+         width: 500px;
+         margin-left: 22px;
+         margin-bottom: 10px;
+         font-size: 18px;
+         border-radius: 25px;
+         padding: 10px;
+         border: none;
+         height: 1.5cm;
+    }
+
+
+    input[type=submit] {
+         padding: 10px;
+         font-size: 28px;
+         border: none;
+         background-color: #f1f1f1;
+         color: whitesmoke;
+    }
+    input[type=submit]:hover {
+         background-color: #f2f2f2;
+         cursor: pointer;
+    }
+
+    .lib{
+         font-size: 18px;
+         margin-bottom: 3px;
+         margin-top: 25px;
+         margin-left: 22px;
+    }
+
+    .error{
+         font-style: italic;
+         text-align: center;
+         color: red;
+    }
+     </style>
 
   <main>
          
@@ -24,7 +117,7 @@
                          {{ form.num_ordre  }}
                     </div>
                     <div>
-                         <p class="lib">Choisir le thème du mémoire</p>
+                         <p class="lib">Thème du mémoire</p>
                          {{ form.theme  }}
                     </div>
                     <div>
