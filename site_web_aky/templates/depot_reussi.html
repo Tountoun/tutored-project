@@ -26,11 +26,11 @@
       margin-right: 20px;
       width: 30px;
       margin-top: 50px;
-      font-size: 15px;
       border: none;
       border-radius: 4px;
       background: green;
       font-size: 20px;
+      color: white;
     }
     .close-btn:hover {
       cursor: pointer;
@@ -54,9 +54,7 @@
       z-index: 1;
       background: black;
     }
-    .title {
-      font-size: 20px;
-    }
+
        </style>
 
   <main>
@@ -66,7 +64,6 @@
      <div class="modal-container">
           <div class="auth-modal" id="auth-modal">
                <div class="title">Votre document a été bien enrégistré</div>
-               <div class="instruction">Cliquez sur OK</div>
                <a href="{% url 'application_web_aky:home_etudiant' %}">
                     <button class="close-btn" onclick="closeModal()">OK</button>
                </a>  

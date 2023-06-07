@@ -113,14 +113,18 @@ def filtrer(filtres_theme=[], filtres_parcours=[]):
      if filtres_theme:
           themes = Theme.objects.filter(libelle__in=[theme.capitalize() for theme in filtres_theme]).values()
           [themes_ids.append(theme['id']) for theme in themes]
+          
      if filtres_parcours:
           parcours = Parcours.objects.filter(
               libelle__in = [parc.title() for parc in filtres_parcours]).values('id')
+          
           for parc in parcours:
                etudiant_filtre = Etudiant.objects.filter(parcours=parc['id']).values()
                [etudiants_ids.append(etudiant['id']) for etudiant in etudiant_filtre]
+               
      parcours_memoires = [Memoire.objects.filter(etudiant=id).values() for id in etudiants_ids]
      theme_memoires = [Memoire.objects.filter(theme=id).values() for id in themes_ids]
+     
      if filtres_parcours and filtres_theme:
           memoires = Memoire.objects.filter(Q(etudiant__in=etudiants_ids) & Q(theme__in=themes_ids)).values()
      elif filtres_theme:
@@ -129,6 +133,7 @@ def filtrer(filtres_theme=[], filtres_parcours=[]):
           memoires = Memoire.objects.filter(Q(etudiant__in=etudiants_ids)).values()
      else:
           memoires = Memoire.objects.all().values()
+          
      return memoires
 
 def rechercher(request):
@@ -144,6 +149,7 @@ def rechercher(request):
                     if precedent:
                         memoires_precedents = Memoire.objects.filter(id__in=precedent)
                         memoires = memoires_precedents.filter(description__icontains=cle).all().values()
+                        
                     else:
                         memoires = Memoire.objects.all().values()
                else:
@@ -161,16 +167,21 @@ def rechercher(request):
                memoire_dict['description'] = memoire['description']
                memoire_dict['auteur'] = user_etu['last_name'] + ' ' + user_etu['first_name']
                memoires_list.append(memoire_dict)
+               
           user = User.objects.get(username=request.user.username)
           is_admin = False
+          
           if Administrateur.objects.filter(user=user).exists():
                is_admin = True
+               
           context = {
                'is_admin': is_admin,
                'memoires': memoires_list,
                'resultats': len(memoires_list)
           }
+          
           return render(request, 'recherche.html', context)
+     
      return redirect("/")
 
 @login_required(login_url="/")
