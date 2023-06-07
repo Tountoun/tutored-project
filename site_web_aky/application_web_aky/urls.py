@@ -20,8 +20,11 @@ urlpatterns = [
     path('etudiant/profile', views.profile, name='profile'),
    
     path('admin/profile', views.profile, name='profile'),
+    
+    path('etudiant/deposer/succes/', views.depot_succes, name='depot_succes'),
 
     re_path(r'^consulter/(?P<memoire_pk>[0-9a-f-]+)/$',
             views.consulter, name='consulter'),
+
 
     ]

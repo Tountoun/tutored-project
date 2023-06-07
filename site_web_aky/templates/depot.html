@@ -94,7 +94,7 @@
          text-align: center;
          color: red;
     }
-     </style>
+       </style>
 
   <main>
          
@@ -109,7 +109,7 @@
           {% endfor %}
      
           <div class="color">
-               <form  method="POST" enctype="multipart/form-data">
+               <form  method="POST" action="/aky/etudiant/deposer/" enctype="multipart/form-data">
                
                     {% csrf_token %}
                     <div>
@@ -154,5 +154,5 @@
           {% endblock %} 
 
      </main>
-
-     {% include 'footer.html' %}
+     
+  {% include 'footer.html' %}

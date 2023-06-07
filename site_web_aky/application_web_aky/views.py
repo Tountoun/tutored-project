@@ -7,6 +7,7 @@ from django.conf import settings
 from django.contrib import messages
 
 from itertools import chain
+from django.urls import reverse
 import requests
 import os
 import json
@@ -97,7 +98,11 @@ def autoriser(request):
 def home_etudiant(request):
      etudiant = Etudiant.objects.filter(user=request.user)
      if etudiant.exists():
-          return render(request, 'etudiant_home.html', {"etudiant": etudiant.get()})
+          return render(
+               request,
+               'etudiant_home.html',
+               {"etudiant": etudiant.get()}
+               )
      return redirect('/')
 
 
@@ -172,6 +177,7 @@ def rechercher(request):
 def deposer(request):
      user = User.objects.get(username=request.user.username)
      etudiant = Etudiant.objects.get(user=user)
+     is_redirected = False
      if etudiant.deposer:
           if request.method == 'POST':
                form_depot = MemoireForm(request.POST, request.FILES)
@@ -192,7 +198,7 @@ def deposer(request):
                     etudiant.deposer = False
                     memoire.save()
                     etudiant.save()
-                    return redirect('home_etudiant')
+                    return redirect('/aky/etudiant/deposer/succes/')
                messages.info(request, 'Votre formualire n\'est pas valide !!!')
                return redirect('deposer')
      else:
@@ -203,6 +209,11 @@ def deposer(request):
           'etudiant': etudiant
      }
      return render(request, 'depot.html', context)
+
+
+@login_required(login_url="/")
+def depot_succes(request):
+     return render(request, 'depot_reussi.html')
 
 
 def consulter(request, memoire_pk):
